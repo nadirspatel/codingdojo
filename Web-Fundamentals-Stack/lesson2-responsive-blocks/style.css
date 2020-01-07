@@ -1,0 +1,54 @@
+@media only screen and (max-width: 480px){
+    /* we will set these stylings only if the device is a screen with a width of 480px or less */
+    .navbtn {
+        display: hidden;
+    }
+}
+
+@media only screen and (min-width: 481px){
+    /* we will set these stylings only if the device is a screen with a width of 480px or less */
+    .navbtn {
+        display: hidden;
+    }
+}
+
+@media only screen and (min-width: 1024px){
+    /* we will set these stylings only if the device is a screen with a width of 480px or less */
+    .navbtn {
+        background-color: blue;
+        display: inline-block;
+        width: 20%;
+    }
+}
+
+.container {
+    padding: 20px 20px 20px 20px;
+    background-color: #eee;
+    width: 100%;
+}
+
+.green-header {
+    background-color: green;
+    width: 100%;
+    height: 80px;
+}
+
+.rightcolumn {
+    display: inline-block;
+    background-color: red;
+    width: 80%;
+    padding: 5px 5px 5px 5px;
+}
+
+.yellowbox {
+    display: inline-block;
+    background-color: yellow;
+    width: 33%;
+    height: 60px;
+}
+
+.purplebox {
+    width: 100%;
+    backgroud-color: purple;
+    height: 80px;
+}

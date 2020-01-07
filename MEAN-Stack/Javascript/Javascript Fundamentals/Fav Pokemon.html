@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Favorite Pokemon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script> 
+</head>
+<body>
+
+    <script>
+        // assuming you have jQuery
+        $(document).ready(function(){
+        var favoritePokemon_name;
+        var favoritePokemon_moves;
+        // the given link is for Bulbasaur's information
+        $.get("https://pokeapi.co/api/v2/pokemon/1/", function(data){     
+            favoritePokemon_name = data.name;
+            favoritePokemon_moves = data.move;
+        });
+        document.getElementById("demo").innerHTML = "My favorite Pokemon is" + favoritePokemon_name;      // Predict the output!
+        document.getElementById("demo").innerHTML = favoritePokemon_name + " moves are: " + favoritePokemon_moves;      // Predict the output!
+    });   
+        </script>
+        <div id="demo"></div>
+</body>
+</html>

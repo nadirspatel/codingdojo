@@ -1,0 +1,48 @@
+<div>
+    <a href="#/dashboard">Dashboard</a> | 
+    <a href="#/table">Exercise Table</a> | 
+    <a href="#/track">Track</a>  
+    <a href="#/" style="margin-left: 75%">Logout</a>
+</div><br>
+
+<h2>{{lift.name}}</h2>
+
+<div style="text-align: center; margin-right: 30px; display: inline-block;">
+	<h4>Starting Position</h4>
+	<img src="{{lift.pic_left}}" height="200px" width="300px">
+</div>
+<div style="text-align: center; display: inline-block;">
+	<h4>Ending Position</h4>
+	<img src="{{lift.pic_right}}" height="200px" width="300px">
+</div><br>
+
+<div style="width: 40%"><br>
+	<p>Instructions: <span>
+			<ol>
+				<li ng-repeat="line in lift.guide">{{line}}</li>
+			</ol>
+		</span>
+	</p>
+</div><br>
+
+<div style="display:inline-block; margin-right: 20px;">
+	<h3>Exercise Data</h3>
+	<p>Main Muscle Worked: <a href="#/data/{{lift.main_muscle}}">{{lift.main_muscle}}</a></p>
+	<p>Secondary Muscles: 
+		<span ng-repeat="other in lift.other_muscles">
+			<a href="#/data/{{other.name}}" style="margin-right: 10px">{{other.name}}</a>
+		</span>
+	<p>Exercise Type: <a href="#/data/{{lift.type}}">{{lift.type}}</a></p>
+	</p>
+	<p>Equipment: <a href="#/data/{{lift.equipment}}">{{lift.equipment}}</a></p>
+	<p>Force: <a href="#/data/{{lift.force}}">{{lift.force}}</a></p>
+	<p>Difficulty: <a href="#/data/{{lift.level}}">{{lift.level}}</a></p>
+	<p>Mechanics Type: <a href="#/data/{{lift.mechanics}}">{{lift.mechanics}}</a></p>
+	<p>Sport: <a href="#/data/{{lift.sport}}">{{lift.sport}}</a></p>
+	<p>More Info: <a href="{{lift.link}}">Bodybuilding.com</a></p>
+</div>
+
+<div style="display:inline-block; vertical-align: top">
+	<h3>Main Muscle:</h3>
+	<img src="{{lift.muscle_img}}">
+</div>

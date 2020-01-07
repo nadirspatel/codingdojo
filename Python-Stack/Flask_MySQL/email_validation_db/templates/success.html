@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Success!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                  {% for message in messages %}
+                    <div class="alert alert-success">
+                    {{message}}
+                    </div>
+                  {% endfor %}
+                {% endif %}
+              {% endwith %}
+    </div>
+    <div class="row">
+        <!-- begin content -->
+    <h3>Email addresses entered</h3>
+    <table class="table table-hover">
+        <thead>
+            <th>Email</th>
+            <th>Created At</th>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <form method="POST" action="/delete">
+            <tr>
+                <td>{{ user['email'] }}</td>
+                <td>{{ user['created_at'] }}</td>
+                <td><input type="submit" name="delete" value="Delete Record"></td>
+            </tr>
+            </form>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p>&nbsp;</p>
+    </p>
+    <!-- end content -->
+    </div>
+</div>
+
+</body>
+</html>

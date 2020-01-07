@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Email Validation with Database</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+        <div class="row">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-success">
+                {{message}}
+                </div>
+              {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+    <div class="row">
+        <form method="POST" action="/process">
+            <h3>Subscribe to our newsletter!</h3>
+        <table class="table table">
+            <tr>
+                <td>Email Address:</td>
+                <td><input type="text" name="email"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" name="submit" value="Subscribe"></td>
+            </tr>
+        </table>
+        </form>
+    </p>
+    <!-- end content -->
+    </div>
+</div>
+
+</body>
+</html>
+    
+</body>
+</html>

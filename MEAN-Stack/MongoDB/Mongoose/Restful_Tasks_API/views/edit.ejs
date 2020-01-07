@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Restful Tasks API: Dashboard: Edit Task</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+        *{
+            font-family: Arial,helvetica,sans-serif;
+            font-size: 14px;
+        }
+        h1 {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .quote {
+            padding-bottom: 10px;
+        }
+        .quotesList {
+        width: 400px;
+        border: 1px dashed blue;
+        border-radius: 30px;
+        padding: 20px;
+        padding-bottom: 20px;
+        }
+        .messages {
+        width: 400px;
+        border: 1px dashed red;
+        border-radius: 5px;
+        }
+        </style>
+    </head>
+    <body>
+    <div class="container">
+
+            <!-- tip use JSON.stringify to easily see objects printed in full instead of [object Object] -->
+            <!-- based on the structure of your messages, determine how to display them -->
+            <% if(messages.edittask) { %>
+            <%- JSON.stringify(messages) %> 
+            <% for (var x of messages.edittask) { %>
+            <div class="messages">
+            Error: <h4><%= x %></h4>
+            </div>
+            <% } %>
+            <% } %>
+
+        <div class="quotesList">
+        <h1>Edit Task</h1>
+        <hr>
+        <% for (let i=0; i<tasks.length; i++) { %>
+	    <form method="POST" action="/edit">
+            <div class="quote">
+            <input type="hidden" name="_id" value="<%= tasks[i]._id %>">
+            Task Name: <input type="text" name="name" value="<%= tasks[i].name %>"><br>
+            Task Description: <input type="text" name="description" value="<%= tasks[i].description %>"><br>
+            <input type="submit" value="Update">
+        </form>
+        <% } %>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: dojoninjas
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: codingdojo
+Implementation-Vendor-Id: com.codingdojo.dojoninjas
+Build-Jdk: 1.8.0_191
+Implementation-URL: http://projects.spring.io/spring-boot/dojoninjas/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

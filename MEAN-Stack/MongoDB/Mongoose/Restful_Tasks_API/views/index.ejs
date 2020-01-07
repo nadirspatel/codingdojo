@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Restful Tasks API: Dashboard</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+        *{
+            font-family: Arial,helvetica,sans-serif;
+            font-size: 14px;
+        }
+        h1 {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .animalname {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .quote {
+            padding-bottom: 10px;
+        }
+        .quotesList {
+        width: 400px;
+        border: 1px dashed blue;
+        border-radius: 30px;
+        padding: 20px;
+        padding-bottom: 20px;
+        }
+        .messages {
+        width: 400px;
+        border: 1px dashed red;
+        border-radius: 5px;
+        padding-bottom: 10px;
+        }
+        </style>
+    </head>
+    <body>
+    <div class="container">
+
+            <!-- tip use JSON.stringify to easily see objects printed in full instead of [object Object] -->
+            <!-- based on the structure of your messages, determine how to display them -->
+            <% if(messages.viewanimals) { %>
+            <%- JSON.stringify(messages) %> 
+            <% for (var x of messages.viewanimals) { %>
+            <div class="messages">
+            Error: <h4><%= x %></h4>
+            </div>
+            <% } %>
+            <% } %>
+
+        <div class="quotesList">
+        <h1>Restful Tasks API: Dashboard using MEAN stack!</h1>
+        <b><a href="/new"> Add New Task</a></b> | 
+        <b><a href="/api"> View jSON API</a></b><br>
+        <hr>
+            <% for (let i=0; i<tasks.length; i++) { %>
+            <div class="quote">
+            <b class="animalname"><%= tasks[i].name %></b><br>
+            Description: <%= tasks[i].description %><br>
+            Added on: <%= tasks[i].createdAt %><br>
+            <a href="/details/<%= tasks[i].id %>">Details</a> | 
+            <a href="/edit/<%= tasks[i].id %>">Edit</a> | 
+            <a href="/delete/<%= tasks[i].id %>">Delete</a></div>
+            <% } %>
+        </div>
+
+    </div>
+</body>
+</html>

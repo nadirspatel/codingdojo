@@ -1,0 +1,119 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red209\green209\blue209;}
+{\*\expandedcolortbl;;\csgray\c0;\cssrgb\c85256\c85256\c85256;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs28 \cf2 \cb3 \CocoaLigature0 // create database my_first_app\
+> use my_first_app\
+switched to db my_first_app\
+\
+// create table students\
+> db.createCollection('students')\
+\{ "ok" : 1 \}\
+\
+// show table students\
+> show collections\
+students\
+\
+// create 5 students\
+> db.students.insert(\{name: "Nadir Patel", home_state: "CA", lucky_number: 22, birthday: \{month: 08, day: 22, year: 1982\}\})\
+WriteResult(\{ "nInserted" : 1 \})\
+> db.students.insert(\{name: "Zara Patel", home_state: "CA", lucky_number: 22, birthday: \{month: 02, day: 22, year: 2018\}\})\
+WriteResult(\{ "nInserted" : 1 \})\
+> db.students.insert(\{name: "Zena Patel", home_state: "CA", lucky_number: 69, birthday: \{month: 06, day: 09, year: 1984\}\})\
+WriteResult(\{ "nInserted" : 1 \})\
+> db.students.insert(\{name: "Neena Patel", home_state: "CA", lucky_number: 711, birthday: \{month: 07, day: 11, year: 1985\}\})\
+WriteResult(\{ "nInserted" : 1 \})\
+> db.students.insert(\{name: "Adam Patel", home_state: "CA", lucky_number: 722, birthday: \{month: 07, day: 22, year: 2020\}\})\
+WriteResult(\{ "nInserted" : 1 \})\
+\
+// find all students\
+> db.students.find().pretty()\
+\{\
+	"_id" : ObjectId("5be0a244e348284f6195976d"),\
+	"name" : "Nadir Patel",\
+	"home_state" : "CA",\
+	"lucky_number" : 22,\
+	"birthday" : \{\
+		"month" : 8,\
+		"day" : 22,\
+		"year" : 1982\
+	\}\
+\}\
+\{\
+	"_id" : ObjectId("5be0a262e348284f6195976e"),\
+	"name" : "Zara Patel",\
+	"home_state" : "CA",\
+	"lucky_number" : 22,\
+	"birthday" : \{\
+		"month" : 2,\
+		"day" : 22,\
+		"year" : 2018\
+	\}\
+\}\
+\{\
+	"_id" : ObjectId("5be0a27be348284f6195976f"),\
+	"name" : "Zena Patel",\
+	"home_state" : "CA",\
+	"lucky_number" : 69,\
+	"birthday" : \{\
+		"month" : 6,\
+		"day" : 9,\
+		"year" : 1984\
+	\}\
+\}\
+\{\
+	"_id" : ObjectId("5be0a29be348284f61959770"),\
+	"name" : "Neena Patel",\
+	"home_state" : "CA",\
+	"lucky_number" : 711,\
+	"birthday" : \{\
+		"month" : 7,\
+		"day" : 11,\
+		"year" : 1985\
+	\}\
+\}\
+\{\
+	"_id" : ObjectId("5be0a2bde348284f61959771"),\
+	"name" : "Adam Patel",\
+	"home_state" : "CA",\
+	"lucky_number" : 722,\
+	"birthday" : \{\
+		"month" : 7,\
+		"day" : 22,\
+		"year" : 2020\
+	\}\
+\}\
+\
+// find all students from California specific\
+> db.students.find(\{home_state: "CA"\})\
+\{ "_id" : ObjectId("5be0a244e348284f6195976d"), "name" : "Nadir Patel", "home_state" : "CA", "lucky_number" : 22, "birthday" : \{ "month" : 8, "day" : 22, "year" : 1982 \} \}\
+\{ "_id" : ObjectId("5be0a262e348284f6195976e"), "name" : "Zara Patel", "home_state" : "CA", "lucky_number" : 22, "birthday" : \{ "month" : 2, "day" : 22, "year" : 2018 \} \}\
+\{ "_id" : ObjectId("5be0a27be348284f6195976f"), "name" : "Zena Patel", "home_state" : "CA", "lucky_number" : 69, "birthday" : \{ "month" : 6, "day" : 9, "year" : 1984 \} \}\
+\{ "_id" : ObjectId("5be0a29be348284f61959770"), "name" : "Neena Patel", "home_state" : "CA", "lucky_number" : 711, "birthday" : \{ "month" : 7, "day" : 11, "year" : 1985 \} \}\
+\{ "_id" : ObjectId("5be0a2bde348284f61959771"), "name" : "Adam Patel", "home_state" : "CA", "lucky_number" : 722, "birthday" : \{ "month" : 7, "day" : 22, "year" : 2020 \} \}\
+\
+// find students lucky number > 3\
+> db.students.find(\{lucky_number: \{$gt: 3\}\})\
+\{ "_id" : ObjectId("5be0a244e348284f6195976d"), "name" : "Nadir Patel", "home_state" : "CA", "lucky_number" : 22, "birthday" : \{ "month" : 8, "day" : 22, "year" : 1982 \} \}\
+\{ "_id" : ObjectId("5be0a262e348284f6195976e"), "name" : "Zara Patel", "home_state" : "CA", "lucky_number" : 22, "birthday" : \{ "month" : 2, "day" : 22, "year" : 2018 \} \}\
+\{ "_id" : ObjectId("5be0a27be348284f6195976f"), "name" : "Zena Patel", "home_state" : "CA", "lucky_number" : 69, "birthday" : \{ "month" : 6, "day" : 9, "year" : 1984 \} \}\
+\{ "_id" : ObjectId("5be0a29be348284f61959770"), "name" : "Neena Patel", "home_state" : "CA", "lucky_number" : 711, "birthday" : \{ "month" : 7, "day" : 11, "year" : 1985 \} \}\
+\{ "_id" : ObjectId("5be0a2bde348284f61959771"), "name" : "Adam Patel", "home_state" : "CA", "lucky_number" : 722, "birthday" : \{ "month" : 7, "day" : 22, "year" : 2020 \} \}\
+\
+\
+// find students lucky number <= 10\
+> db.students.find(\{lucky_number: \{$lte: 10\}\})\
+\
+// find students lucky number between 10 and 100 inclusive\
+> db.students.find(\{lucky_number: \{$lte: 100, $gte: 10 \}\})\
+\{ "_id" : ObjectId("5be0a244e348284f6195976d"), "name" : "Nadir Patel", "home_state" : "CA", "lucky_number" : 22, "birthday" : \{ "month" : 8, "day" : 22, "year" : 1982 \} \}\
+\{ "_id" : ObjectId("5be0a262e348284f6195976e"), "name" : "Zara Patel", "home_state" : "CA", "lucky_number" : 22, "birthday" : \{ "month" : 2, "day" : 22, "year" : 2018 \} \}\
+\{ "_id" : ObjectId("5be0a27be348284f6195976f"), "name" : "Zena Patel", "home_state" : "CA", "lucky_number" : 69, "birthday" : \{ "month" : 6, "day" : 9, "year" : 1984 \} \}\
+> \
+\
+\
+\
+}

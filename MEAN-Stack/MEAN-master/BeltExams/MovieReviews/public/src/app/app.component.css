@@ -1,0 +1,18 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.menu {
+  background-color: #006699;
+  font-size: 22px;
+  font-weight: bold;
+  color: navy;
+  padding: 10px;
+  border-radius: 10px;
+}
+.menu a{
+  color: #fff
+}
+.container {
+  margin: 10px 0px 0px 10px;
+  padding: 10px;
+}

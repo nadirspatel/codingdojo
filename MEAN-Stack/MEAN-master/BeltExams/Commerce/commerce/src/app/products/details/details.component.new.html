@@ -1,0 +1,21 @@
+<h2>Product Details</h2>
+<div *ngIf="thisProduct">
+
+<table #detailProductForm="ngForm">
+  <tr>
+    <td class="tData">Name</td>
+    <td>{{thisProduct.name | titlecase}}</td>
+  </tr>
+  <tr>
+    <td class="tData">Qty</td>
+    <td [(ngModel)]="qty">{{thisProduct.qty}}</td>
+  </tr>
+  <tr>
+    <td class="tData">Price</td>
+    <td>{{thisProduct.price | currency:"USD"}}</td>
+  </tr>
+</table>
+<a [routerLink]="['/']"><button class="resetButton">BACK</button></a>
+<button class="deleteButton" (click)="destroy(thisProduct._id)" [disabled]="qty > 0">DELETE</button>
+
+

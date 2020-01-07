@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>click demo</title>
+  <style type="text/css">
+  .container {
+      width: 800px;
+  }
+
+  .ninja {
+      display: inline-block;
+      width: 25%;
+      height: 25%;
+  }
+
+  #ninja-image {
+    border: 1px solid black;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<div class="container">
+<!-- begin ninjas -->
+    <div class="ninja"><img class="ninja-image" src="https://photos2.fotosearch.com/bthumb/CSP/CSP881/ninja-mascot-clip-art__k25046218.jpg" alt=""></div>
+    <div class="ninja"><img class="ninja-image" src="https://photos2.fotosearch.com/bthumb/CSP/CSP881/ninja-mascot-clip-art__k25046218.jpg" alt=""></div>
+    <div class="ninja"><img class="ninja-image" src="https://photos2.fotosearch.com/bthumb/CSP/CSP881/ninja-mascot-clip-art__k25046218.jpg" alt=""></div>
+    <div class="ninja"><img class="ninja-image" src="https://photos2.fotosearch.com/bthumb/CSP/CSP881/ninja-mascot-clip-art__k25046218.jpg" alt=""></div>
+    <div class="ninja"><img class="ninja-image" src="https://photos2.fotosearch.com/bthumb/CSP/CSP881/ninja-mascot-clip-art__k25046218.jpg" alt=""></div>
+    <div class="ninja"><img class="ninja-image" src="https://photos2.fotosearch.com/bthumb/CSP/CSP881/ninja-mascot-clip-art__k25046218.jpg" alt=""></div>
+    <div class="ninja"><img class="ninja-image" src="https://photos2.fotosearch.com/bthumb/CSP/CSP881/ninja-mascot-clip-art__k25046218.jpg" alt=""></div>
+    <div class="ninja"><img class="ninja-image" src="https://photos2.fotosearch.com/bthumb/CSP/CSP881/ninja-mascot-clip-art__k25046218.jpg" alt=""></div>
+<!-- end ninjas-->
+</div>
+<div class="buttons">
+    <button id="hideButton">hide a ninja</button>
+    <button id="showButton">show me all the ninjas again</button>
+</div>
+ 
+<script>
+    // hide function usage: hides #ninja-image when it is clicked
+    $( '.ninja-image' ).click(function() {
+    $( this ).hide();
+    });
+
+    // show function usage: shows all #ninja when it is clicked
+    $('#showButton').click(function() {
+        $( '.ninja-image' ).show();
+    });
+</script>
+ 
+</body>
+</html>

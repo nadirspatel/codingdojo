@@ -1,0 +1,29 @@
+<a href='#/dashboard'>Home</a> | <a href="#/">Log Out</a>
+
+
+<h1>New Question</h1>
+<ul ng-repeat="error in errors" >
+	<li>{{error.message}}</li>
+</ul>	
+
+<form>
+	<label>Question:</label>
+	<br>
+	<input type="text" ng-model="newQuestion.question">
+	<br>
+	<label>Correct Answer:</label>
+	<br>
+	<input type="text" ng-model="newQuestion.answer">
+	<br>
+	<label>Fake Answer 1:</label>
+	<br>
+	<input type="text" ng-model="newQuestion.wronganswer1">
+	<br>
+	<label>Fake Answer 2:</label>
+	<br>
+	<input type="text" ng-model="newQuestion.wronganswer2">
+	<br>
+	<br>
+	<input type="submit" value = "Cancel" ng-click="cancel()">
+	<input type="submit" value = "Add Question" ng-click="addQuestion(newQuestion)">
+</form>

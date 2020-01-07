@@ -1,0 +1,12 @@
+<html>
+<body>
+    <h2>Here are all the Cars:</h2>
+    <% for (var x in cars) { %>
+        <h3>Make: <%= cars[x].make %></h3>
+        <h4>Model: <%= cars[x].model %></h4>
+	<img src="images/<%= cars[x].image %>" width="300" height="300">
+        <hr>
+    <% } %>
+</body>
+</html>
+

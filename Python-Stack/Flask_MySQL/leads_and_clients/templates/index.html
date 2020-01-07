@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Leads and Clients</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <!-- begin jquery pie chart-->
+    <script>
+            window.onload = function () {
+            
+            var options = {
+                title: {
+                    text: "Clients and Leads"
+                },
+                subtitles: [{
+                    text: "As of {{ TIMESTAMP }}"
+                }],
+                animationEnabled: true,
+                data: [{
+                    type: "pie",
+                    startAngle: 40,
+                    toolTipContent: "<b>{label}</b>: {y}",
+                    showInLegend: "true",
+                    legendText: "{label}",
+                    indexLabelFontSize: 18,
+                    indexLabel: "{label} - {y}",
+                    dataPoints: [
+                        {% for client in clients %}
+                        { y: {{ client['leads']}}, label: "{{ client['first_name']}} {{ client['last_name'] }}" },
+                        {% endfor %}
+                        { y: 0, label: "Others" }
+                    ]
+                }]
+            };
+            $("#chartContainer").CanvasJSChart(options);
+            
+            }
+            </script>
+            <!-- end jquery pie chart -->
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="date_select">
+
+        </div>
+    </div>
+    <div class="row">
+        <!-- begin content -->
+    <h3>List of all clients and # of leads</h3>
+    <table class="table table-hover">
+        <thead>
+            <th>Client Name</th>
+            <th>Number of Leads</th>
+        </thead>
+        <tbody>
+            {% for client in clients %}
+            <tr>
+                <td>{{ client['first_name'] }} {{ client['last_name'] }}</td>
+                <td>{{ client['leads'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p>&nbsp;</p>
+        <form method="post" action="/create_client">
+            <h3>Insert New Client and # of leads</h3>
+        <table class="table table">
+            <tr>
+                <td>First Name:</td>
+                <td><input type="text" name="first_name"></td>
+            </tr>
+            <tr>
+                <td>Last Name:</td>
+                <td><input type="text" name="last_name"></td>
+            </tr>
+            <tr>
+                <td>Leads:</td>
+                <td><input type="text" name="leads"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" name="create" value="Add"></td>
+            </tr>
+        </table>
+        </form>
+    </p>
+        <!-- show the pie chart on DOM -->
+        <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+        <!-- end show pie chart-->
+    <!-- end content -->
+    </div>
+</div>
+<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+</body>
+</html>

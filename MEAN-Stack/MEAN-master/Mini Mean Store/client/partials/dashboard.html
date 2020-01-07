@@ -1,0 +1,25 @@
+<div style="width: 15%; height: 90%; display: inline-block; margin-right: 10px;">
+	<input ng-model='product_filter' placeholder="search..."></input><br><br>
+</div>
+
+<div style="display: inline-block; vertical-align: top; width: 80%; text-align: center;">
+<!-- 	<h3>Products</h3> -->
+	<div ng-repeat='product in products | filter:product_filter | limitTo:6 | orderBy: "name":false' style="text-align: center; margin: 0px 20px 20px 20px; display: inline-block;">
+		<img src="{{product.imageUrl}}" style="width: 200px; height: 200px; border: 1px solid black; margin-bottom: 10px;">
+		<p ng-bind='product.name' style="margin-bottom: 0px;"></p>
+		<p>({{product.initialQty}} left)</p>
+	</div><br>
+	<a href="#/products">show more...</a>
+</div><br><br>
+
+<div style="display: inline-block; vertical-align: top; width: 80%; float: right">
+	<h3>Recent Orders</h3>
+	<p ng-repeat='order in orders | orderBy:"createdAt":true | limitTo:3'>{{order.name}} purchased {{order.qty}} {{order.product}}...({{order.createdAt | date:'h:mm a - MMMM d, y'}})</p>
+	<a href="#/orders">show more...</a>
+</div>
+
+<div style="display: inline-block; vertical-align: top; width: 80%; float: right; margin-top: 30px;">
+	<h3>Recent Customers</h3>
+	<p ng-repeat='customer in customers | orderBy:"createdAt":true | limitTo:3'>{{customer.name}} joined the store...({{customer.createdAt | date:'h:mm a - MMMM d, y'}})</p>
+	<a href="#/customers">show more...</a>
+</div>	

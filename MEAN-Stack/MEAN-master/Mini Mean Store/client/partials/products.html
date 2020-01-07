@@ -1,0 +1,26 @@
+<div style="width: 20%; display: inline-block; margin-right: 10px;">
+	<input ng-model='product_filter' placeholder="search..."></input><br><br>
+
+	<h4>Add a new product</h4>
+	<form class="form-group">
+			<label>Name</label>
+			<input class="form-control" ng-model='newProduct.name' placeholder="name..."></input><br>
+			<label>Image (url)</label>
+			<input class="form-control" placeholder="http://" ng-model='newProduct.imageUrl'></input><br>
+			<label>Description</label>
+			<textarea class="form-control" ng-model='newProduct.description' rows="5"></textarea><br>
+			<label>Initial Quantity</label>
+			<select class="form-control" ng-model='newProduct.initialQty'>
+				<option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>10</option><option>20</option><option>50</option><option>100</option><option>150</option><option>200</option>
+			</select><br>
+			<input type="submit" ng-click='create()' value="Create"></input>
+	</form><br>
+</div>
+
+<div style="display: inline-block; vertical-align: top; width: 75%;">
+	<div ng-repeat='product in products | filter:product_filter | orderBy: "createdAt":true' style="text-align: center; margin: 0px 20px 20px 20px; display: inline-block;">
+		<img src="{{product.imageUrl}}" style="width: 200px; height: 200px; border: 1px solid black; margin-bottom: 10px;">
+		<p ng-bind='product.name' style="margin-bottom: 0px;"></p>
+		<p>({{product.initialQty}} left)</p>
+	</div>
+</div>

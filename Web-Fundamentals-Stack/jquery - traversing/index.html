@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>jQuery - Traversing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+</head>
+<body>
+    <div>
+        <button>Click me for crazy things!</button>
+        <ul>
+            <li><h3>Tiger Woods</h3></li>
+            <li><h3>Phil Mickelson</h3></li>
+            <li><h3>Ben Hogan</h3></li>
+            <li><h3>Jack Nicklaus</h3></li>
+            <li><h3>Gary Player</h3></li>
+            <li><h3>Rory Mcilroy</h3></li>
+        </ul>
+     </div>
+     <script>
+      $('button').click(function(){
+      $(this).siblings().children().children().text('Michael Choi was here!')
+      })
+     </script>
+</body>
+</html>

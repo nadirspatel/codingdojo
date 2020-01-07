@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ninja to Cat Sliced 5 times</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<style type="text/css">
+body {
+    background-color: #ccc;
+}
+#ninja-image {
+}
+.slice {
+padding: 2px 2px 2px 2px;
+}
+</style>
+</head>
+<body>
+
+    <div class="image-container">
+
+        <div class="slice">
+            <img id="ninja-image" src="img/ninja0.png" data-alt-src="img/cat0.png">
+        </div>
+        <div class="slice">
+            <img id="ninja-image" src="img/ninja1.png" data-alt-src="img/cat1.png">
+        </div>
+        <div class="slice">
+            <img id="ninja-image" src="img/ninja2.png" data-alt-src="img/cat2.png">
+        </div>
+        <div class="slice">
+            <img id="ninja-image" src="img/ninja3.png" data-alt-src="img/cat3.png">
+        </div>
+        <div class="slice">
+            <img id="ninja-image" src="img/ninja4.png" data-alt-src="img/cat4.png">
+        </div>
+    </div>
+<script>
+        $('img').click(function() {
+            var oldimg = $(this).attr('src');
+            var newimg = $(this).attr('data-alt-src');
+            $(this).attr('src',newimg);
+        })
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<a href="#/">Log Out</a>
+<br>
+<br>
+<h1 > Welcome {{user.name}}!</h1>
+
+<button><a href="#/play/{{user._id}}">Play Game</a></button>
+<br>
+<br>
+	
+
+		
+<a href="#/create/{{user._id}}">Add a Question</a>
+
+			</div>
+			<p>Search: <input type="text" ng-model="filter_name"> </p>
+			<table>
+				<tr>
+					<td>Name</td>
+					<td>Score</td>
+					<td>Percentage</td>
+				</tr>
+				<tr ng-repeat="score in scores | filter: filter_name">
+					<td>{{score.name}}</td>
+					<td>{{score.score}}</td>
+					<td>{{score.percentage}}<td>
+				</tr>
+			</table>

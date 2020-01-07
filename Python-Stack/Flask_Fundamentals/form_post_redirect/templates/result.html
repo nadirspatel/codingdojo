@@ -1,0 +1,30 @@
+    <html>
+    <head>
+       <title>Form Req</title>
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+      <div class="container">
+      <h1>User Created</h1>
+      <form name="form_results">
+        <table name="table table-hover">
+        <tr>
+        <td>Name: {{ request.form['name'] }}</td>
+        </tr>
+      </table>
+      </form>
+      <p></p>
+      <form name="form_results">
+      <table>
+        {% for key, value in result.items() %}
+      <tr>
+      <td>{{ key }}: {{ value }}</td>
+      </tr>
+    {% endfor %}
+    </table>
+    </form>
+    </div>
+    </body>
+</html>

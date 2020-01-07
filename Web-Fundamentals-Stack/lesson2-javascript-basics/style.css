@@ -1,0 +1,92 @@
+.container{
+  width: 970px;
+  background-color: navy;
+  display: block;
+  padding: 10px;
+  margin: 10px 10px 10px 10px;
+  }
+
+/* header */
+
+  #header{
+    display: inline-block;
+    height: 60px;
+    width: 950px;
+    background-color: red;
+    border-radius: 10px;
+    padding: 0px 0px 10px 10px;
+    }
+
+  #header-text {
+    font-size: 32px;
+    font-family: Arial, Arial, Helvetica, sans-serif;
+    color: #eee;
+  }
+
+
+
+  /* left menu */
+
+  #left-menu{
+    width: 200px;
+    height: 400px;
+    background-color: teal;
+    border-radius: 20px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 10px 10px 0px 0px;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    padding: 10px 10px 10px 10px;
+  }
+  #left-menu a:link { color: cyan; }
+
+
+
+
+  /* content */
+
+  #content{
+    margin: 10px 10px 0px 0px;
+    width: 700px;
+    height: 400px;
+    background-color: black;
+    border-radius: 20px;
+    display: inline-block;
+    color: #eee;
+    padding: 10px 10px 10px 10px;
+  }
+
+  #content-text{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #fff;
+  }
+
+  #content-h2 {
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #eee;
+  }
+
+  #content a:link { color: cyan; }
+
+  #purpletext { color: purple; }
+
+  /* footer */
+
+  #footer{
+    width: 950px;
+    background-color: gray;
+    border-radius: 10px;
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    padding: 20px 0px 20px 10px;
+    margin: 10px 0px 0px 0px;
+
+
+  }
+
+  #footer a:link { color: cyan; }

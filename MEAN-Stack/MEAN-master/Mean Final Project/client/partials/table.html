@@ -1,0 +1,44 @@
+<div>
+    <a href="#/dashboard">Dashboard</a> | 
+    Exercise Table | 
+    <a href="#/track">Track</a>
+    <a href="#/" style="margin-left: 75%">Logout</a>
+</div><br>
+<input ng-model='filterer' placeholder="Search all categories..."></input><br><br>
+<div class="panel panel-default">
+<table class="table table-striped" style="table-layout: auto;">
+    <thead>
+    	<tr>
+    		<th style="width: 9%">Name</th>
+    		<th style="width: 9%">Main Muscle Worked</th>
+    		<th style="width: 19%">Other Muscles</th>
+    		<th style="width: 9%">Force</th>
+    		<th style="width: 9%">Difficulty</th>
+    		<th style="width: 10%">Mechanics Type</th>
+    		<th style="width: 9%">Equipment</th>
+    		<th style="width: 9%">Sport</th>
+    		<th style="width: 10%">Type</th>
+    	</tr>
+    </thead>
+</table>
+<div style="overflow-y: auto; height: 800px;">
+<table class="table table-striped" style="table-layout: fixed">
+    <tbody id="lift_table">
+   		<tr ng-repeat='lift in lifts | filter:filterer'>
+            <td><a href="#/exercise/{{lift._id}}">{{lift.name}}</a></td>
+            <td><a href="#/data/{{lift.main_muscle}}">{{lift.main_muscle}}</a></td>
+            <td style="width: 20%">
+                <span ng-repeat='other in lift.other_muscles'><a href="#/data/{{other.name}}" style="margin-right: 10px;">{{other.name}}</a> </span> 
+            </td>
+            <td><a href="#/data/{{lift.force}}">{{lift.force}}</a></td>
+            <td><a href="#/data/{{lift.level}}">{{lift.level}}</a></td>
+            <td><a href="#/data/{{lift.mechanics}}">{{lift.mechanics}}</a></td>
+            <td><a href="#/data/{{lift.equipment}}">{{lift.equipment}}</a></td>
+            <td><a href="#/data/{{lift.sport}}">{{lift.sport}}</a></td>
+            <td><a href="#/data/{{lift.type}}">{{lift.type}}</a></td>
+   		</tr>
+    </tbody>
+    </table>
+</div>
+
+</div>

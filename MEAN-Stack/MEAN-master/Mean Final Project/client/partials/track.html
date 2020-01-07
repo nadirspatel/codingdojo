@@ -1,0 +1,90 @@
+<div>
+	<a href="#/dashboard">Dashboard</a> |  
+	<a href="#/table">Exercise Table</a> | 
+	Track
+	<a href="#/" style="margin-left: 75%">Logout</a>
+</div>
+<h2>Log a Workout</h2>
+
+<div class="panel panel-default" style="width: 320px; height: 100%; padding:10px; display: inline-block; vertical-align: top">
+  <div class="panel-heading">
+    <h2 class="panel-title" style="display: inline-block; margin-right: 10px">Seach</h2> 
+    <input ng-model='filterer' placeholder="e.g. squat, running"></input>
+  </div>
+  <div class="panel-body" ng-if='filterer'>
+	  <div ng-repeat='lift in lifts | filter:filterer' style="margin-bottom: 10px" ng-click='addExercise(lift)'>
+	  		<img src="{{lift.pic_left}}" height="50px" width='50px' style="display: inline-block;"> 
+	  		<div style="display: inline-block; word-wrap: break-word; height: 40px; width: 210px; padding: 2px 5px; vertical-align: middle;">
+	  			<div style="word-wrap: break-word; display: inline-block">
+	  				<a href="" style="color:black">{{lift.name}}</a>
+	  			</div>
+	  		</div>
+	  </div>
+  </div><br>
+  <h4>Recent Workouts</h4>
+  <div ng-repeat='workout in currentUser.workouts | limitTo:5 | orderBy:"createdAt":true'>
+  		<a ng-click='loadWorkout(workout)'>{{workout.title}}</a>
+  		<span style="float:right">{{workout.createdAt | date:'MMMM dd, yyyy'}}</span>
+  </div>
+
+
+</div>
+
+<div class="panel panel-default" style="width: 500px; height: 100%; padding:10px; display: inline-block; vertical-align: top">
+  <div class="panel-heading">
+    <h2 class="panel-title" style="display: inline-block; margin-right: 10px">Workout Name:</h2> 
+    <input ng-model='newWorkout.title' placeholder="e.g. Chest Day, Recovery Run" style="width: 200px;"></input>
+    <button ng-if='newWorkout.exercise' ng-click='clearAll()' style="float:right" class='btn btn-sm'>Remove All</button>
+  </div>
+  <div class="panel-body">
+	  <div ng-repeat='exercise in exercises track by exercise.name' style="margin-bottom: 10px">
+	  		<img src="{{exercise.pic_left}}" height="50px" width='50px' style="display: inline-block;"> 
+	  		<div style="display: inline-block; word-wrap: break-word; height: 40px; width: 210px; padding: 2px 5px; vertical-align: middle;">
+	  			<div style="word-wrap: break-word; display: inline-block">
+	  				<span  style="color:black">{{exercise.name}}</span>
+	  			</div>
+
+	  		</div>
+	  		<span><button ng-click='removeExercise(exercise)' class='btn btn-sm' style="float:right;">Remove</button></span><br>
+	  		<hr style="margin: 5px 0px">
+
+	  		<button ng-click='addSet(exercise)' style="margin-right: 15px" class='btn btn-sm'>Add Set</button>
+	  		<button ng-click='removeSet(exercise)' style="margin-right: 15px" class='btn btn-sm'>Remove Set</button>
+	  		<hr style="margin: 5px 0px">
+	  		
+	  		<div ng-if='exercise.type!="Cardio"'>
+	  			<span style="margin-right: 25px">Set</span>
+	  			<span style="margin-right: 45px">lbs</span>
+	  			<span style="margin-right: 25px">Reps</span>
+	  		</div>
+	  		<div ng-if='exercise.type=="Cardio"'>
+	  			<span style="margin-right: 25px">Set</span>
+	  			<span style="margin-right: 50px">Duration(h:m:s)</span>
+	  			<span style="margin-right: 40px">Distance(mi)</span>
+	  			<span style="margin-right: 25px">Pace(min/mi)</span>
+	  		</div>
+
+	  		<div ng-repeat='set in exercise.sets track by $index' ng-if='exercise.type=="Cardio"'>
+			  		<span style="margin-right: 40px">{{$index+1}}</span>
+			  		<input type="number" style="margin: 0px 5px 10px 0px; width:35px; height:25px" min='0' ng-model="newWorkout.exercise[exercise.name].set[$index+1].hour" ng-init='newWorkout.exercise[exercise.name].set[$index+1].hour=0'>
+			  		<input type="number" style="margin: 0px 5px 10px 0px; width:35px; height:25px" min='0' ng-model="newWorkout.exercise[exercise.name].set[$index+1].min" ng-init='newWorkout.exercise[exercise.name].set[$index+1].min=0'>
+			  		<input type="number" style="margin: 0px 25px 10px 0px; width:35px; height:25px" min='0' ng-model="newWorkout.exercise[exercise.name].set[$index+1].sec" ng-init='newWorkout.exercise[exercise.name].set[$index+1].sec=0'>
+			  		<input type="number" style="margin: 0px 75px 10px 0px; width:55px; height:25px" min='0' ng-model="newWorkout.exercise[exercise.name].set[$index+1].distance">
+			  		<span  style="margin: 0px 35px 10px 0px; width:45px; height:25px" ng-model="newWorkout.exercise[exercise.name].set[$index+1].pace" ng-if='newWorkout.exercise[exercise.name].set[$index+1].distance'>{{(newWorkout.exercise[exercise.name].set[$index+1].hour*60+newWorkout.exercise[exercise.name].set[$index+1].min)/newWorkout.exercise[exercise.name].set[$index+1].distance | number:1}}</span>
+		  	</div>
+
+		  	<div ng-repeat='set in exercise.sets' ng-if='exercise.type!="Cardio"'>
+				  		<span style="margin-right: 35px">{{$index+1}}</span>
+				  		<input type="number" style="margin: 0px 20px 10px 0px; width:45px; height:25px" min='1' ng-model="newWorkout.exercise[exercise.name].set[$index+1].lbs" ng-init='newWorkout.exercise[exercise.name].set[$index+1].lbs = newWorkout.exercise[exercise.name].set[$index].lbs'>
+				  		<input type="number" style="margin: 0px 35px 10px 0px; width:45px; height:25px" min='1' ng-model="newWorkout.exercise[exercise.name].set[$index+1].reps" ng-init='newWorkout.exercise[exercise.name].set[$index+1].reps = newWorkout.exercise[exercise.name].set[$index].reps'>
+			</div>
+			<hr style="margin: 10px 0px; border:1px solid grey"><br>
+			<span hidden ng-model='newWorkout.exercise[exercise.name].pic_left' value='{{exercise.pic_left}}'></span>
+
+	  		<span hidden ng-model='newWorkout.exercise[exercise.name].type'>{{exercise.type}}</span>
+	  </div>
+	  <div ng-if='exercises.length>0'>
+			<input type="submit" class="btn" value="Finish Workout" ng-click='submitWorkout(newWorkout)'></input>
+		</div>
+  </div>
+</div>

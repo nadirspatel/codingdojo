@@ -1,0 +1,84 @@
+<html style="margin: 20px;">
+
+<head>
+    <title>Full Mean Demo</title>
+	 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-route.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script type="text/javascript">
+
+        var friends_app = angular.module('friends_app', ['ngRoute']);
+
+        friends_app.config(function($routeProvider){
+			$routeProvider
+				.when('/',{
+					templateUrl: 'partials/partial.html',
+					controller: 'FriendsController',
+                    controllerAs: 'FC'
+				})
+		});
+
+        friends_app.factory('FriendFactory', function($http) {
+            var factory = {};
+            var friends = [];
+
+            factory.index = function(callback) {
+                $http.get('/friends').success(function(output) {
+                    friends = output;
+                    callback(friends);
+                });
+                return friends;
+            }
+
+            factory.create = function(new_friend,callback) {
+                $http.post('/friends',new_friend).success(function(output){
+                    friends = output;
+                    callback(friends);
+                })
+            }
+
+            factory.destroy = function(friend,callback) {
+                $http.post('/friends/'+friend._id).success(function(output){
+                    friends = output;
+                    callback(friends);
+                })
+            }
+
+            return factory;
+        });
+
+        friends_app.controller('FriendsController', function(FriendFactory) {
+            var that = this;
+
+            var getFriends = function(){
+                FriendFactory.index(function(data){
+                    that.friends = data;
+                });
+            };
+            getFriends();
+
+            this.addFriend = function() {
+                FriendFactory.create(this.new_friend,function(data){
+                    that.friends = data;
+                });
+                this.new_friend = {};
+            };
+
+            this.removeFriend = function(friend) {
+                FriendFactory.destroy(friend,function(data){
+                    that.friends = data;
+                });
+            };
+
+        });
+    </script>
+</head>
+
+
+<body>
+    <div ng-app='friends_app'>
+		<div ng-view=''></div>
+	</div>
+</body>
+
+</html>

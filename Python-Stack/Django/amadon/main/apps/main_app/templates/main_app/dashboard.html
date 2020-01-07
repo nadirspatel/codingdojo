@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Amadon: Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+    .right_side col .align-right: {
+        text-align: right;
+        vertical-align: bottom;
+    }
+    </style>
+</head>
+<body>
+
+    <!-- show header panel-->
+    <div class="container row">
+        <div class="left_side col">
+            <h4>Welcome {{ user.first_name }} to Amadon</h4>
+        </div>
+        <div class="right_side col">
+            <div class="align-right">
+                <a href="/addItem">Add New Item</a> | 
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+    </div>
+    <!-- end header panel-->
+    <p>&nbsp;</p>
+    <div class="container row">
+    <!-- begin left column-->
+        <div class="left_side col">
+            <h5>Available Items</h5>
+        <!-- show available jobs-->
+        <table class="table table-hover">
+            <thead>
+                <th>Item Title</th>
+                <th>Location</th>
+                <th>Actions</th>
+            </thead>
+            <tbody>
+            {% for i in items %}
+            <tr>
+                <td>{{i.item_name}}</td>
+                <td>{{i.price}}</td>
+                <td>{{i.category}}</td>
+                {% if user.id == i.user_id  %}
+                <td> <a href="/view/{{ i.id }}">View Item</a> | 
+                     <a href="/addtomyCart/{{ i.id }}">Add Item to Cart</a>
+                     <br>
+                     <a href="/edit/{{ i.id }}">Edit Item</a> | 
+                     <a href="/deleteitem/{{ i.id }}">Delete Item</a></td>
+                {% else %}
+                <td> <a href="/view/{{ i.id }}">View Item</a> | 
+                     <a href="/addtomyCart/{{ i.id }}">Add Item to Cart</a>
+                </td>
+                {% endif %}
+            </tr>
+            {% endfor %}    
+            </tbody>
+        </table>
+        <!-- end available items-->
+    </div>
+    <!-- end left column-->
+
+    <!-- begin right column-->
+    <div class="right_side col">
+        <!-- show my cart-->
+        <h5>My Cart</h5>
+        <table class="table table-hover">
+            <thead>
+                <th>Item Name</th>
+                <th>Actions</th>
+            </thead>
+            <tbody>
+                {% for c in items %}
+                <tr>
+                    <td>(({{c.item_id}}) {{c.item_name}}</td>
+                    <td><a href="/view/{{ c.id }}">View My Item</a> | 
+                         <a href="/deleteitem/{{ c.id }}">Delete My Item</a>
+                    </td>
+                </tr>
+                {% endfor %}    
+            </tbody>
+        </table>
+        <!-- end show my items-->
+    </div>
+    <!-- end right column-->
+</div>
+
+</body>
+</html>

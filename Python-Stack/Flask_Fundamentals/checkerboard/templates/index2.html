@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Checkerboard!</title>
+        <style>
+            *{
+                border: 0px;
+                margin: 0px;
+            }
+            div{
+                height: 100px;
+                width: 100px;
+                background: black;
+                display: inline-block;
+                margin-left: 10px;
+                margin-bottom: 10px;
+            }
+            table, td{
+                border: 1px solid black;
+            }
+            table{
+                border-collapse: collapse;
+                width: 100%;
+            }
+            td{
+                height: 100px;
+                width: 100px;
+            }
+            .color1{
+                background: red;
+            }
+            .color2{
+                background: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Flask Fundamentals - Checkerboard Assignment</h1>
+        <table>
+        {% for i in range(down): %}
+            <tr>
+                {% for j in range(across): %}
+                <td class="color{{ (i+j)%2+1  }}"></td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </table>
+    </body>
+</html>

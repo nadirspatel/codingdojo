@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Quoting Dojo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+        *{
+            font-family: Arial,helvetica,sans-serif;
+            font-size: 14px;
+        }
+        .container {
+            text-align: center;
+        }
+        .goBtn {
+            font-size: 16px;
+            background-color: darkgreen;
+            color: white;
+        }
+        .goBtn2 {
+            font-size: 16px;
+            background-color: darkblue;
+            color: white;
+        }
+        .quotesForm {
+        width: 400px;
+        border: 1px dashed blue;
+        border-radius: 10px;
+        padding: 20px;
+        }
+        .messages {
+        width: 400px;
+        border: 1px dashed red;
+        border-radius: 5px;
+        }
+        </style>
+    </head>
+    <body>
+    <div class="container">
+
+            <!-- tip use JSON.stringify to easily see objects printed in full instead of [object Object] -->
+            <!-- based on the structure of your messages, determine how to display them -->
+            <% if(messages.getquotes) { %>
+            <%- JSON.stringify(messages) %> 
+            <% for (var x of messages.getquotes) { %>
+            <div class="messages">
+            Error: <h4><%= x %></h4>
+            </div>
+            <% } %>
+            <% } %>
+
+    <div class="quotesForm">
+    <form method="post" action="/quotes">
+    <table>
+    <tr><td>Your Name:</td><td> <input type="text" name="full_name" size="20"></td></tr>
+    <tr><td>Your Quote:</td><td> <textarea name="my_quote"></textarea></td></tr>
+    <tr><td><input type="submit" value="Add my Quote" class="btnGo"></form></td>
+        <td><form method="get" action="/quotes"><input type="submit" value="Skip to Quotes" class="btnGo2"></td>
+    </tr>
+    </table>
+    </form>
+    </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<p>
+Details about {{movie.title}}
+</p>
+<fieldset>
+<table>
+  <tr>
+    <td>Added By:</td><td>{{movie.added_by}}</td>
+  </tr>
+  <tr>
+    <td>Rating:</td><td>{{movie.rating}}</td>
+  </tr>
+  <tr>
+    <td>Review:</td><td>{{movie.review}}</td>
+  </tr>
+<tr><td colspan="2">
+    <button (click)='delete(movie._id)'>DELETE MOVIE!</button>
+</td></tr>
+</table>
+</fieldset>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add User</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    <h1>Add a new user</h1>
+    <!-- read on to learn about form actions, we'll talk about the method in a later section -->
+    <form action='/users/create' method='post'>
+        {% csrf_token %}
+        First name: 
+        <br>
+        <input type='text' name='first_name'>
+        <br>
+        Last name: 
+        <br>
+        <input type='text' name='last_name'>
+        <br>
+        Email: 
+        <br>
+        <input type='text' name='email'>
+        <br>
+        <br>
+        <input type='submit' value='Create'>
+        <br>
+        <br>
+        <a href="/users">Go Back</a>
+    </form>
+</body>
+
+</html>

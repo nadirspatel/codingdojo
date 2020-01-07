@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    <script>
+$(document.ready(function () {
+    $("form-info").submit(function () {
+
+    $("#btn".click(function() {
+        var info = $(this).serializeArray();
+        var row = "<tr>"
+            for ( var i = 0; i < info.length; i++ ) {
+            row += "<td>";
+            row += info[i].value;
+            row += "</td>";
+            }
+            row += "</tr>"
+            }        
+    </script>
+
+    <form id="form-info" action="">
+        <p><input type="text" id="firstName" name="firstName"></p>
+        <p><input type="text" name="lastName"></p>
+        <p><input type="text" name="phoneNumber"></p>
+    </form>
+
+</body>
+</html>

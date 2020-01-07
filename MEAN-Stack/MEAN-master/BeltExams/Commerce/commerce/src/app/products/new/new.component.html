@@ -1,0 +1,40 @@
+<h2>New Product</h2>
+<ul *ngIf="errors">
+  <li class="errors" *ngFor="let error of errors">{{error}}</li>
+</ul>
+
+<div  *ngIf="newProduct">
+
+<form name="newProductForm" #newProductForm="ngForm" (submit)="submitNewProduct()">
+
+  <label for="name">Name</label>
+  <input type="text" name="name"
+  required
+  minlength="3"
+  [(ngModel)]="newProduct.name"
+  #name = "ngModel"
+  >
+  <br>
+
+  <label for="qty">Qty</label>
+  <input type="number" name="qty"
+  required
+  [(ngModel)] = "newProduct.qty"
+  #qty = "ngModel"
+  >
+  <br>
+
+  <label for="price">Price</label>
+  <input type="number" name="price"
+  required
+  [(ngModel)] = "newProduct.price"
+  #price = "ngModel"
+  >
+  <br>
+
+  <a [routerLink]="['/']"><button class="resetButton">RESET</button></a>
+  <input [disabled]="!newProductForm.valid" class="createButton" type="submit" value="CREATE">
+
+<p>N</p>
+</form>
+</div>

@@ -1,0 +1,12 @@
+<html>
+<body>
+    <h2>Here are all the Cats:</h2>
+    <% for (var x in cats) { %>
+        <h3>Breed: <%= cats[x].breed %></h3>
+        <h4>Type: <%= cats[x].type %></h4>
+	<img src="images/<%= cats[x].image %>" width="300" height="300">
+        <hr>
+    <% } %>
+</body>
+</html>
+

@@ -1,0 +1,10 @@
+<html>
+<body>
+    <h2>EJS Cats</h2>
+    <% for (var x in cats) { %>
+        <a href="/cats/<%= cats[x].name %>"><img 
+            src="images/<%= cats[x].image %>" width="300" height="300"></a>
+    <% } %>
+</body>
+</html>
+

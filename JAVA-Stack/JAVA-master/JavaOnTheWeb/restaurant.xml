@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8">
+
+<fullMenu>
+
+	<breakfastMenu>
+		<item category="entree">
+			<name>Bacon and Eggs</name>
+			<description>It&apos;s eggs. And bacon.</description>
+			<price>$5.99</price>
+		</item>
+		<item category="entree">
+			<name>Pancakes</name>
+			<description>A hearty stack of slapjacks</description>
+			<price>$5.99</price>
+		</item>
+		<item category="beverage">
+			<name>Coffee</name>
+			<description>Coffee, black as midnight, hot as hell</description>
+			<price>$0.99</price>
+		</item>
+	</breakfastMenu>
+
+	<lunchMenu>
+		//stuff
+	</lunchMenu>
+
+	<dinnerMenu>
+		<item category="entree">
+			<name>Beef</name>
+			<description>moo</description>
+			<price>$15.99</price>
+		</item>
+		<item category="entree">
+			<name>Chicken</name>
+			<description>cluck</description>
+			<price>$15.99</price>
+		</item>
+		<item category="beverage">
+			<name>Beer</name>
+			<description>Burp</description>
+			<price>$5.99</price>
+		</item>
+	</dinnerMenu>
+
+</fullMenu>

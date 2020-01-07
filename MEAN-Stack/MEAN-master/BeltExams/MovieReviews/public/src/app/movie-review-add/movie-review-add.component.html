@@ -1,0 +1,20 @@
+<div *ngFor="let review of movie">
+<h2>Add a new Review for {{review.title}} ({{review._id}})</h2>
+<form (submit)="createReview()">
+  <input type="hidden" name="_id" value="{{review._id}}">
+  <input type="hidden" name="title" value="{{review.title}}">
+  <p>Added By: <input type="text" name="added_by" [(ngModel)]="review.added_by"></p>
+  <p *ngIf="review.added_by.length < 3">Added By must be at least 3 characters</p>
+
+  <p>Rating: <input type="text" name="rating" [(ngModel)]="review.rating"></p>
+  <p *ngIf="review.rating.length < 1">Rating is required</p>
+
+  <p>Review: <input type="text" name="review" [(ngModel)]="review.review"></p>
+  <p *ngIf="review.review.length < 3">Review must be at least 3 characters</p>
+
+
+  <input type="submit"> &nbsp;&nbsp;
+  <button (click)='cancel()'>Cancel</button>
+
+</form>
+</div>

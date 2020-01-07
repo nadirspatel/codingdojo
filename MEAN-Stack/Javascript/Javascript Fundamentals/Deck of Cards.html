@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Deck of Cards</title>
+    <style>
+    *{ 
+      font-size: 30px; 
+    }
+    .card {
+      height: 300px;
+      width: 200px;
+      background-color: darkolivegreen;
+      color: #fff;
+      font-weight: bold;
+      display: inline-block;
+      border: 1px solid darkGreen;
+      border-radius: 10px;
+      padding: 5px;
+    }
+    #hand {
+      text-align: center;
+      width: 1500px;
+      height: 600px;
+      display: block;
+      background-color: lightcoral;
+      border: 1px solid brown;
+      border-radius: 40px;
+      padding-top: 100px;
+    }
+    #options {
+      text-align: center;
+      width: 1500px;
+    }
+    </style>
+  </head>
+  <body>
+  
+    <!-- show our hand -->
+    <div id="hand"> </div>
+    <!-- end show our hand -->
+    <div id="options">
+      <button id="draw5Cards">Draw 5 Cards</button>
+      <script>
+      var button = document.getElementById("draw5Cards")
+      button.addEventListener("click", drawDemBoys);
+      function drawDemBoys() {
+        draw5Cards()
+      }
+      </script>
+    </div>
+
+  
+  <!-- javascript for deck of cards -->
+  <script type="text/javascript">
+    class Deck {
+      constructor(){
+        this.cards = ['\u2660 Ace', '\u2660 2', '\u2660 3', '\u2660 4', '\u2660 5', '\u2660 6', '\u2660 7', '\u2660 8', '\u2660 9', '\u2660 10', '\u2660 Jack', '\u2660 Knight', '\u2660 Queen', '\u2660 King','\u2665 Ace', '\u2665 2', '\u2665 3', '\u2665 4', '\u2665 5', '\u2665 6', '\u2665 7', '\u2665 8', '\u2665 9', '\u2665 10', '\u2665 Jack', '\u2665 King', '\u2665 Queen', '\u2665 Ace', '\u2666 Ace', '\u2666 2', '\u2666 3', '\u2666 4', '\u2666 5', '\u2666 6', '\u2666 7', '\u2666 8', '\u2666 9', '\u2666 10', '\u2666 Jack', '\u2666 Knight', '\u2666 Queen', '\u2666 King', '\u2663 Ace', '\u2663 2', '\u2663 3', '\u2663 4', '\u2663 5', '\u2663 6', '\u2663 7', '\u2663 8', '\u2663 9', '\u2663 10', '\u2663 Jack', '\u2663 Knight', '\u2663 Queen', '\u2663 King'];
+        this.original = this.cards;
+      }
+      //shuffle the cards
+      shuffle() {
+        var m = this.cards.length, t, i;
+        while (m) {
+          i = Math.floor(Math.random()*m--);
+          t = this.cards[m];
+          this.cards[m] = this.cards[i];
+          this.cards[i] = t;
+        }
+        return this;
+      }
+      //reset the cards
+      reset() {
+        this.cards = this.original;
+        return this;
+      }
+      //deal the cards
+      deal() {
+        let c = Math.floor(Math.random()*this.cards.length);
+        var card = this.cards[c];
+        this.cards.splice(c,1);
+        return card;
+      }
+    }
+
+//setup player object
+    class Player {
+      constructor(name){
+        this.name=name;
+        this.hand=[];
+      }
+      
+      draw(deck) {
+        var c = deck.deal();
+        console.log(`${this.name} drew ${c}.`);
+        this.hand.push(c);
+        return this;
+      }
+      discard(num) {
+        if (this.hand.indexOf(num) > -1) {
+          console.log(`${this.name} discarded ${num}.`);
+          let c = this.hand.indexOf(num);
+          this.hand.splice(c,1);
+          return this.hand;
+        }
+        else{
+          console.log(`${this.name} does not have ${num}.`);
+          return this.hand;
+        }
+      }
+    }
+    //deal the hand to player
+    function handtoplayer(hand) {
+      html_string = ""
+      for(let i in hand) {
+        card = "<div class=card>" +hand[i]+" </div>&nbsp;"
+        html_string += card;
+      }
+      document.getElementById("hand").innerHTML = html_string;
+    }
+    let deck1 = new Deck();
+    let player1 = new Player('Nadir Patel');
+    let player2 = new Player('Donald Trump')
+    deck1.shuffle();
+    player1.draw(deck1).draw(deck1).draw(deck1).draw(deck1).draw(deck1);
+    player2.draw(deck1).draw(deck1).draw(deck1).draw(deck1).draw(deck1);
+    //player1.discard(5);
+    console.log(player1.hand);
+    console.log(player2.hand)
+    handtoplayer(player1.hand);
+    handtoplayer(player2.hand)
+  </script>
+</body>
+</html>

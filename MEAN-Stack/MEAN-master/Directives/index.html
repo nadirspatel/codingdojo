@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-route.min.js"></script>
+		<script>
+		var myApp = angular.module('myApp', []);
+		myApp.controller('foodController', function($scope){
+			$scope.foods = [
+				{name: "Pizza"},
+				{name: "BBQ"},
+				{name: "Fries"},
+				{name: "Salad"},
+				{name: "Steak"},
+			];
+
+			$scope.addFood = function(){
+				$scope.foods.push($scope.newFood);
+				$scope.newFood = {};
+			}
+		});
+		</script>
+	</head>
+	<body ng-app='myApp'>
+		<div ng-controller='foodController'>
+			<form>
+				Favorite Food <input type="text" ng-model='newFood.name'></input>
+				<input type="submit" value="Add Food" ng-click='addFood()'></input>
+			</form>
+			<p>Currently typing: <span ng-bind='newFood.name'></span></p><br>
+			<input type="text" ng-model='filterer' placeholder="filter..."></input><br><br>
+			Show food list? <input type="checkbox" ng-model='checked' ng-init='checked=true'></input><br><br>
+			<div ng-if='checked'style="border: 1px solid black; width: 100px; height: auto; padding: 10px;">
+				<p ng-repeat='food in foods | filter: filterer'>{{food.name}}</p>
+			</div><br><br>
+			<img src="http://cdn2.hubspot.net/hub/245562/file-306538470-png/v3/ninja2.png?t=1459792131713" ng-show='newFood.name' class="ng-hide">
+		</div>
+	</body>
+</html>

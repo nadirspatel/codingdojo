@@ -1,0 +1,38 @@
+@media only screen and (max-width: 480px){
+    /* we will set these stylings only if the device is a screen with a width of 480px or less */
+    .navbtn {
+        background-color: yellow;
+    }
+}
+
+@media only screen and (min-width: 481px){
+    /* we will set these stylings only if the device is a screen with a width of 480px or less */
+    .navbtn {
+        background-color: orangered;
+    }
+}
+
+@media only screen and (min-width: 1024px){
+    /* we will set these stylings only if the device is a screen with a width of 480px or less */
+    .navbtn {
+        background-color: blue;
+    }
+}
+
+.container {
+    display: inline-block;
+    padding: 15px 15px 15px 15px;
+    font-size: 14px;
+}
+
+.top {
+    font-size: 16px;
+}
+
+.middle {
+    font-size: 14px;
+}
+
+.navbtn {
+    font-size: 14px;
+}

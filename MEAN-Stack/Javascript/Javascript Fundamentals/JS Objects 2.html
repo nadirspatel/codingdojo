@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JS Objects Challenge 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<script>
+function print() {
+    // define our users obj ects array
+    let users = {
+    employees: [
+        {'first_name':  'Miguel', 'last_name' : 'Jones'},
+        {'first_name' : 'Ernie', 'last_name' : 'Bertson'},
+        {'first_name' : 'Nora', 'last_name' : 'Lu'},
+        {'first_name' : 'Sally', 'last_name' : 'Barkyoumb'}
+    ],
+    managers: [
+       {'first_name' : 'Lillian', 'last_name' : 'Chambers'},
+       {'first_name' : 'Gordon', 'last_name' : 'Poe'}
+    ]
+ };
+// end of objects array
+
+// for loop to get the data
+    for ( var i = 0; i < users.employees.length; i++) {
+        console.log( i + " - " + users.employees[i].last_name + ", " + users.employees[i].first_name )
+    }
+    for ( var j = 0; j < users.managers.length; j++) {
+        console.log( j + " - " + users.managers[j].last_name + ", " + users.managers[j].first_name )
+    }
+// end our for loop
+}
+</script>
+<script>print()</script>
+</body>
+</html>

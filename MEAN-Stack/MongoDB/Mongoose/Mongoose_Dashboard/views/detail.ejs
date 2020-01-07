@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Mongoose Dashboard: Details</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+        *{
+            font-family: Arial,helvetica,sans-serif;
+            font-size: 14px;
+        }
+        h1 {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .quote {
+            padding-bottom: 10px;
+        }
+        .quotesList {
+        width: 400px;
+        border: 1px dashed blue;
+        border-radius: 30px;
+        padding: 20px;
+        padding-bottom: 20px;
+        }
+        .messages {
+        width: 400px;
+        border: 1px dashed red;
+        border-radius: 5px;
+        }
+        </style>
+    </head>
+    <body>
+    <div class="container">
+
+            <!-- tip use JSON.stringify to easily see objects printed in full instead of [object Object] -->
+            <!-- based on the structure of your messages, determine how to display them -->
+            <% if(messages.viewanimal) { %>
+            <%- JSON.stringify(messages) %> 
+            <% for (var x of messages.viewanimal) { %>
+            <div class="messages">
+            Error: <h4><%= x %></h4>
+            </div>
+            <% } %>
+            <% } %>
+
+        <% for (let i=0; i < animals.length; i++) { %>
+        <div class="quotesList">
+        <h1><%= animals[i].name %></h1>
+        ID: <%= animals[i]._id %>
+        <hr>
+            <div class="quote">
+            <b>Description:</b> <%= animals[i].description %><br>
+            <b>Added on:</b> <%= animals[i].createdAt %><br>
+            </div>
+        </div>
+        <% } %>
+        
+
+    </div>
+</body>
+</html>

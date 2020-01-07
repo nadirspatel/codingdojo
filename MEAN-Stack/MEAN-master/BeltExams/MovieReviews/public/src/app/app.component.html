@@ -1,0 +1,13 @@
+<div>
+  <h1>Welcome to {{title}}!</h1>
+</div>
+<!-- begin menu-->
+<div class="menu">
+  <a [routerLink]="['/']">Home</a> |
+  <a [routerLink]="['/movies']">Movies</a> |
+  <a [routerLink]="['/movies', 'create']">Add New Movie</a>
+</div>
+<!-- end menu-->
+<div class="container">
+<router-outlet></router-outlet>
+</div>

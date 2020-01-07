@@ -1,0 +1,39 @@
+<a href='#/dashboard'>Home</a> | <a href="#/">Log Out</a>
+<br>
+<br>
+<h1> Hi {{user.name}}!</h1>
+<p> Choose an answer for each of the questions and submit the test once done.<p>
+<p>Good Luck!</p>
+<h3>{{message}}</h3>
+<form>
+		<p>1.  {{questions[0].question}}</p>
+		<label>
+			<input type="radio" ng-model="result.one" value="correct">
+			{{questions[0].answer}}
+		</label><br>
+		<label>
+			<input type="radio" ng-model="result.one" value="wrong1">{{questions[0].wronganswer1}}
+		</label><br>
+		<label>
+			<input type="radio" ng-model="result.one" value="wrong2">{{questions[0].wronganswer2}}
+		</label><br>
+		<hr>
+		
+		<p>2.  {{questions[1].question}}</p>
+		<label><input type="radio" ng-model="result.twoo" value="correct">{{questions[1].answer}}</label><br>
+		<label><input type="radio" ng-model="result.twoo" value="wrong1">{{questions[1].wronganswer1}}</label><br>
+		<label><input type="radio" ng-model="result.twoo" value="wrong2">{{questions[1].wronganswer2}}</label><br>
+		<hr>
+
+		<p>3.  {{questions[2].question}}</p>
+		<label><input type="radio" ng-model="result.tree" value="correct">{{questions[2].answer}}</label><br>
+		<label><input type="radio" ng-model="result.tree" value="wrong1">{{questions[2].wronganswer1}}</label><br>
+		<label><input type="radio" ng-model="result.tree" value="wrong2">{{questions[2]	.wronganswer2}}</label><br>
+		<hr>
+
+	</div>
+	<input type="submit" value="cancel" ng-click="cancel()">
+	<input type="submit" value="submit" ng-click="addAnswer(result)">
+
+		
+</form>			

@@ -1,0 +1,74 @@
+<body>
+
+        <header>
+  
+        </header>
+  
+        <section>
+  
+        </section>
+  
+      <script>
+      var header = document.querySelector('header');
+      var section = document.querySelector('section');
+  
+      var requestURL = 'https://opentdb.com/api.php?amount=1&type=multiple';
+      var request = new XMLHttpRequest();
+      request.open('GET', requestURL);
+      request.responseType = 'text';
+      request.send();
+  
+      request.onload = function() {
+        var TriviaText = request.response;
+        var Trvia = JSON.parse(TriviaText);
+        populateHeader(Trivia);
+        showQuestions(Trivia);
+      }
+  
+      function populateHeader(jsonObj) {
+        var myH1 = document.createElement('h1');
+        myH1.textContent = jsonObj['category'];
+        header.appendChild(myH1);
+  
+        var myPara = document.createElement('p');
+        myPara.textContent = 'Difficulty: ' + jsonObj[' difficulty'] + 'Type:' + jsonObj['type'];
+        header.appendChild(myPara);
+  
+      }
+  
+      function showQuestions(jsonObj) {
+        var myQuestions = jsonObj['question'];
+  
+        for(var i = 0; i < questions.length; i++) {
+          var myArticle = document.createElement('article');
+          var myH2 = document.createElement('h2');
+          var myPara1 = document.createElement('p');
+          var myPara2 = document.createElement('p');
+          var myPara3 = document.createElement('p');
+          var myList = document.createElement('ul');
+  
+          myH2.textContent = myQuestions[i].question;
+          myPara1.textContent = 'Correct Answer: ' + myQuestions[i].secretIdentity;
+          myPara2.textContent = 'Para2 TextContent';
+          myPara3.textContent = 'Para3 TextCntent';
+  
+          var wrongAnswers = myQuestions[i].incorrect_answers;
+          for(var j = 0; j < myQuestions.length; j++) {
+            var listItem = document.createElement('li');
+            listItem.textContent = questions[j];
+            myList.appendChild(listItem);
+          }
+  
+          myArticle.appendChild(myH2);
+          myArticle.appendChild(myPara1);
+          myArticle.appendChild(myPara2);
+          myArticle.appendChild(myPara3);
+          myArticle.appendChild(myList);
+  
+          section.appendChild(myArticle);
+        }
+      }
+  
+      </script>
+    </body>
+  </html>

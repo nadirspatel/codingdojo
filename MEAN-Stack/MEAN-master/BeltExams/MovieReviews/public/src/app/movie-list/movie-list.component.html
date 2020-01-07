@@ -1,0 +1,13 @@
+<table>
+  <tr class="tablehead">
+    <td>Name</td>
+    <td>Actions</td>
+  </tr>
+  <tr *ngFor="let movie of movies">
+    <td>{{movie.title}}</td>
+    <td>
+      <!-- add review button--><button [routerLink]="['/movies', movie._id, 'review']">Add Review</button>
+      <!-- read reviews button--><button [routerLink]="['/movies', movie._id]">Read Reviews</button>
+    </td>
+  </tr>
+</table>

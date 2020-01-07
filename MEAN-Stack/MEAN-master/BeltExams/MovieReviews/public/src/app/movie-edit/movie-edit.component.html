@@ -1,0 +1,30 @@
+<h2>Edit Movie: {{movie.title}}</h2>
+
+<fieldset>
+
+<form (submit)="editMovie()">
+
+  <p>Title: <input type="text" name="title" [(ngModel)]="movie.title"></p>
+  <p *ngIf="movie.title.length < 3">Movie Name must be at least 3 characters</p>
+
+  <p>Type: <input type="text" name="type" [(ngModel)]="movie.type"></p>
+  <p *ngIf="movie.type.length < 3">Type must be at least 3 characters</p>
+
+  <p>Description: <input type="text" name="description" [(ngModel)]="movie.description"></p>
+  <p *ngIf="movie.description.length < 4">Description must be at least 4 characters</p>
+
+  <p>Skills (optional)</p>
+  <p>Skill 1: <input type="text" name="skill1" [(ngModel)]="movie.skill1"></p>
+  <p *ngIf="movie.skill1.length < 3">Skill 1 must be at least 3 characters</p>
+
+  <p>Skill 2: <input type="text" name="skill2" [(ngModel)]="movie.skill2"></p>
+  <p *ngIf="movie.skill2.length < 3">Skill 2 must be at least 3 characters</p>
+
+  <p>Skill 3: <input type="text" name="skill3" [(ngModel)]="movie.skill3"></p>
+  <p *ngIf="movie.skill3.length < 3">Skill 3 must be at least 3 characters</p>
+
+  <input type="submit"> &nbsp;&nbsp;
+  <button (click)='cancel()'>Cancel</button>
+</form>
+
+</fieldset>

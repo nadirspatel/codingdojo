@@ -1,0 +1,37 @@
+<html>
+    <head>
+       <title>Signup Form</title>
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+    <div class="container">
+      <h3>Create Account</h3>
+      <form action='/result' method='post' name='form'>
+        <table class="table table-hover">
+            <tr>
+                <td>Name:</td>
+                <td><input type='text' name='name'></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input type='text' name='email'></td>
+            </tr>
+            <tr>
+                <td>Location:</td>
+                <td><input type='text' name='location'></td>
+            </tr>
+            <tr>
+                <td>Comments:</td>
+                <td><textarea name='comments'></textarea></td>
+            </tr>
+            <tr>
+                <td><input type='submit' value='create user'></td>
+                <td><input type='reset' value='reset form'></td>
+            </tr>
+          </table>
+      </form>
+    </div>
+    </body>
+</html>

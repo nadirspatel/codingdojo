@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>View Item {{ item.item_name }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        .item_details{
+            border: 1px dashed blue;
+            display: inline-block;
+            padding: 20px;
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container row">
+        <!-- begin left column-->
+            <div class="left_side col">
+                <h2>View Item {{ item.item_name }}</h2>
+            </div>
+            <!-- end left column -->
+            <!-- begin right column-->
+            <div class="right_side col">
+                    <a href="/dashboard">Back to Dashboard</a> | 
+                    <a href="/logout">Logout</a>
+            </div>
+        <!-- end right column-->
+    </div>
+
+    <p>&nbsp;</p>
+
+    <div class="container row">
+        <div class="col">
+            <div class="col">
+                <h5>{{ item.item_name }}</h5>
+                <table class="table table-hover">
+                <tr>
+                    Category: {{ item.category }}<br>
+                    Description: {{ item.description }}
+                    Price: {{ item.category }}<br>
+                </tr>
+                <tr>
+                    Seller: {{user.first_name}} {{user.last_name}}<br>
+                    Posted On: {{ item.updated_at }}
+                </tr>
+                </table>
+                <br>
+                <a href="/addtomyCart/{{ item.id }}">Add To My Cart</a>
+            </div>
+        </div>
+</body>
+</html>

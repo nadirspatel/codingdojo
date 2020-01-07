@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ninja Class I</title>
+    <script type="text/javascript">
+      function Ninja(name){
+        this.name = name;
+        this.health = 100;
+        var speed = 3;
+        var strength = 3;
+        Ninja.prototype.sayName = function(){
+          console.log("My ninjas name is " + this.name + "!");
+          return this;
+        }
+        Ninja.prototype.showStats = function(){
+          console.log(`Name: ${this.name}, Health: ${this.health}, Speed: ${speed}, Strength: ${strength}`);
+          return this
+        }
+        Ninja.prototype.drinkSake = function(){
+          this.health += 10;
+          console.log(+ this.name + "√ Drank some Sake and gained 10 health")
+          return this;
+        }
+      }
+      var blue_ninja = new Ninja("Nadir Son");
+      var gray_ninja = new Ninja("Michael Choi");
+      var red_ninja = new Ninja("Bok Choi")
+      blue_ninja.sayName().showStats().drinkSake().showStats(); // show stats, drink sake, show stats again chained method
+      gray_ninja.sayName().showStats().drinkSake().drinkSake().drinkSake().showStats();
+      red_ninja.sayName().showStats().drinkSake().drinkSake().showStats();
+      </script>
+  </head>
+  <body>
+    Ninja Class I (View console log)
+  </body>
+</html>

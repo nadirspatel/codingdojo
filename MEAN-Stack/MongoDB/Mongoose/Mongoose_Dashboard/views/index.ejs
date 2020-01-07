@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Mongoose Dashboard</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+        *{
+            font-family: Arial,helvetica,sans-serif;
+            font-size: 14px;
+        }
+        h1 {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .animalname {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .quote {
+            padding-bottom: 10px;
+        }
+        .quotesList {
+        width: 400px;
+        border: 1px dashed blue;
+        border-radius: 30px;
+        padding: 20px;
+        padding-bottom: 20px;
+        }
+        .messages {
+        width: 400px;
+        border: 1px dashed red;
+        border-radius: 5px;
+        }
+        </style>
+    </head>
+    <body>
+    <div class="container">
+
+            <!-- tip use JSON.stringify to easily see objects printed in full instead of [object Object] -->
+            <!-- based on the structure of your messages, determine how to display them -->
+            <% if(messages.viewanimals) { %>
+            <%- JSON.stringify(messages) %> 
+            <% for (var x of messages.viewanimals) { %>
+            <div class="messages">
+            Error: <h4><%= x %></h4>
+            </div>
+            <% } %>
+            <% } %>
+
+        <div class="quotesList">
+        <h1>Mongoose Dashboard using MEAN stack!</h1>
+        <b><a href="/new">>> Add New Animal</a></b>
+        <hr>
+            <% for (let i=0; i<animals.length; i++) { %>
+            <div class="quote">
+            <b class="animalname"><%= animals[i].name %></b><br>
+            Description: <%= animals[i].description %><br>
+            Added on: <%= animals[i].createdAt %><br>
+            <a href="/details/<%= animals[i].id %>">Details</a> | 
+            <a href="/edit/<%= animals[i].id %>">Edit</a> | 
+            <a href="/delete/<%= animals[i].id %>">Delete</a></div>
+            <% } %>
+        </div>
+
+    </div>
+</body>
+</html>

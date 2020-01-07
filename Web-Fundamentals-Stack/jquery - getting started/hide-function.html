@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>click demo</title>
+  <style type="text/css">
+  .container {
+      width: 80%;
+  }
+
+  #ninja {
+      width: 240px;
+      height: 240px;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+
+<p>First Paragraph</p>
+<p>Second Paragraph</p>
+<p>Yet one more Paragraph</p>
+ 
+<script>
+    // hide function usage: hides #ninja when it is clicked
+    $( '#ninja' ).hide(function() {
+    $( this ).hide();
+    });
+
+    // show function usage: shows all #ninja when it is clicked
+    $('#ninja').show(function() {
+        $( this ).show();
+    });
+</script>
+ 
+</body>
+</html>

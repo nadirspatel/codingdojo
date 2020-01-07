@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login & Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style type="text/css">
+    .half {
+        width: 500px;
+        display: inline-block;
+        vertical-align: top;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- begin messages -->
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <!-- end messages-->
+
+    <!-- begin registration form -->
+    <div class="half">
+        <h1>Register</h1>
+        <form action="/register" method="POST">
+            {% csrf_token %}
+            <p>First name: <input type="text" name="first_name"></p>
+            <p>Last name: <input type="text" name="last_name"></p>
+            <p>Email: <input type="email" name="email"></p>
+            <p>Password: <input type="password" name="password"></p>
+            <p>Password Confirmation: <input type="password" name="password_confirmation"></p>
+            <button>Register</button>
+        </form>
+    </div>
+    <!-- end registration form -->
+
+    <!-- begin login form -->
+    <div class="half">
+        <h1>Login</h1>
+        <form action="/login" method="POST">
+            {% csrf_token %}
+            <p>Email: <input type="email" name="email"></p>
+            <p>Password: <input type="password" name="password"></p>
+            <button>Login</button>
+    </form>
+    </div>
+    <!-- end login form -->
+
+</div>
+</body>
+</html>

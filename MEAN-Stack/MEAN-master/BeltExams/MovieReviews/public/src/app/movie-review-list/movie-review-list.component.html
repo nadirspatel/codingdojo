@@ -1,0 +1,21 @@
+<p>
+  Reviews for {{movie.title}}
+  </p>
+  <fieldset>
+  <table>
+    <div *ngFor="let review of movie">
+    <tr>
+      <td>Added By:</td><td>{{review.added_by}}</td>
+    </tr>
+    <tr>
+      <td>Rating:</td><td>{{review.rating}}</td>
+    </tr>
+    <tr>
+      <td>Review:</td><td>{{review.review}}</td>
+    </tr>
+  <tr><td colspan="2">
+      <button (click)='delete(review._id)'>DELETE MOVIE!</button>
+  </td></tr>
+    </div>
+  </table>
+  </fieldset>

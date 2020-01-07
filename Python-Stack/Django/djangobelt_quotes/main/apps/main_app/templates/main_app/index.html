@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <title>Quote Dash</title>
+    <style>
+        .go{
+            background-color:#2f0085e3;
+            color: white;
+            border-radius: 5px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .error{
+            color:red;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to Quote Dash</h1>
+    <p>
+        <!--  begin messages -->
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+                {{ message }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <!-- end messages -->
+    </p>
+
+    <!-- begin main content -->
+    <div class="container row">
+        <!-- begin left column-->
+        <div class="left_side col">
+            <!-- begin register form -->
+            <h3>Register</h3>
+            <form action="/register" method="post">
+                {% csrf_token %}
+            <table class="table table-hover">
+            <tr>
+                <td>First name:</td>
+                <td><input type="text" name="first_name"></td>
+            </tr>
+            <tr>
+                <td>Last name:</td>
+                <td><input type="text" name="last_name"></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input type="text" name="email"></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" name="password"></td>
+            </tr>
+            <tr>
+                <td>Confirm password:</td>
+                <td><input type="password" name="password_confirmation"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" class="go" value="Register"></td>
+            </tr>
+            </form>
+        </table>
+        </div>
+        <!-- end register form-->
+
+        <!-- begin login form-->
+        <div class="right_side col">
+            <h3>Login</h3>
+            <table class="table table-hover">
+            <form action="/login" method="post">
+                {% csrf_token %}
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="text" name="login_email"></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" name="login_password"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" class="go" value="Login"></td>
+                </tr>
+            </form>
+            </table>
+        </div>
+        <!-- end login form-->
+
+    </div>    
+</body>
+</html>

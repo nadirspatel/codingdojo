@@ -1,0 +1,44 @@
+<div style="float: right">
+	<a href="#/dashboard">Dashboard</a> | 
+	<a href="#/">Logout</a>
+</div><br>
+
+<h2>Welcome, {{currentUser.name}}!</h2>
+<input type="text" ng-model='threadFilter' style="float: right" placeholder="Search threads..."></input><br><br>
+
+<table class="table table-striped" style="border: 1px solid tan">
+	<thead>
+		<tr>
+			<th>Category</th>
+			<th>Topic</th>
+			<th>User Name</th>
+			<th>Posts</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat='thread in threads | filter:threadFilter | orderBy:createdAt:true'>
+			<td>{{thread.category}}</td>
+			<td><a ng-click='showOne(thread)'>{{thread.topic}}</a></td>
+			<td><a href="#/users/show/{{thread.nameId}}">{{thread.name}}</td>
+			<td>{{thread.posts}}</td>
+		</tr>
+	</tbody>
+</table><br><br>
+
+<form class="form-group" style="width: 50%">
+	<h3>Create a new Thread</h3>
+	<label>Topic</label>
+	<input type="text" ng-model='newThread.topic' class="form-control"></input><br>
+	<label>Description</label>
+	<textarea rows="4" ng-model='newThread.description' class="form-control"></textarea><br>
+	<label>Category</label>
+	<select ng-model='newThread.category' class="form-control" style="width: auto">
+		<option>HTML</option>
+		<option>Mongoose</option>
+		<option>Node</option>
+		<option>Express</option>
+		<option>JavaScript</option>
+		<option>Angular</option>
+	</select><br>
+	<input type="submit" value="Submit" ng-click='create()' class="btn" style="float: right"></input>
+</form>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Quote Dash: View Account</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        .quote_details{
+            border: 1px dashed black;
+            padding: 20px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container row">
+        <!-- begin left column-->
+            <div class="left_side col">
+                <h2>{{ user.first_name }} {{ user.last_name }}'s Quotes</h2>
+            </div>
+            <!-- end left column -->
+            <!-- begin right column-->
+            <div class="right_side col">
+                    <a href="/dashboard">Back to Dashboard</a> | 
+                    <a href="/logout">Logout</a>
+            </div>
+        <!-- end right column-->
+    </div>
+
+    <p>&nbsp;</p>
+
+    <div class="container row">
+        <div class="left_side col">
+            {% for m in quote %}
+                <div class="quote_details">
+                    {{ m.author_name}}: "{{m.description}}"
+                </div><br>
+            {% endfor %} 
+            </div>
+        </div>
+</body>
+</html>

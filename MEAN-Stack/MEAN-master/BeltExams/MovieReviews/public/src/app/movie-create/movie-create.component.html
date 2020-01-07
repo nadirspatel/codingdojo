@@ -1,0 +1,19 @@
+<h2>Add a New Movie</h2>
+<form (submit)="createMovie()">
+
+  <p>Movie Name: <input type="text" name="title" [(ngModel)]="newMovie.title"></p>
+  <p *ngIf="newMovie.title.length < 3">Movie Name must be at least 3 characters</p>
+
+  <p>Added By: <input type="text" name="added_by" [(ngModel)]="newMovie.added_by"></p>
+  <p *ngIf="newMovie.added_by.length < 3">Added By must be at least 3 characters</p>
+
+  <p>Rating: <input type="text" name="rating" [(ngModel)]="newMovie.rating"></p>
+  <p *ngIf="newMovie.rating.length < 1">Rating is required</p>
+
+  <p>Review: <input type="text" name="review" [(ngModel)]="newMovie.review"></p>
+  <p *ngIf="newMovie.review.length < 3">Review must be at least 3 characters</p>
+
+  <input type="submit"> &nbsp;&nbsp;
+  <button (click)='cancel()'>Cancel</button>
+
+</form>

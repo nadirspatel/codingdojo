@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Edit Item {{ item.item_name }} ({{ item.item_id }})</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        .error{
+            color:red;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+        <!-- show header panel-->
+        <div class="container row">
+            <div class="left_side col">
+                <h4>Welcome {{ user.first_name }} to Amadon</h4>
+            </div>
+            <div class="right_side col">
+                <div class="align-right">
+                    <a href="/addItem">Add New Item</a> | 
+                    <a href="/logout">Logout</a>
+                </div>
+            </div>
+        </div>
+        <!-- end header panel-->
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+                {{ message }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        
+        <div class="container row">
+            <div class="left_side col">
+                <form action="/processedit/{{ item.id }}" method="post">
+                    <input type="hidden" name="item_id" value="{{ item.id }}">
+                    {% csrf_token %}
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <td>Item Name:</td>
+                            <td><input type="text" name="item_name" size="20" maxlength="120" value="{{ item.item_name}}"></td>
+                        </tr>
+                        <tr>
+                            <td>Description:</td>
+                            <td><textarea name="description" cols="20" rows="4" value="{{ item.description }}"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Price:</td>
+                            <td><input type="text" name="price" size="20" maxlength="120" value="{{ item.price }}"></td>
+                        </tr>
+                        <tr>
+                            <td>Category:</td>
+                            <td><select name="category">
+                                <option>{{ item.category }}</option>
+                                <option>Auto</option>
+                                <option>Books</option>
+                                <option>Clothing</option>
+                                <option>Electronics</option>
+                                <option>Video Games</option>
+                            </select></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input type="submit" value="Add Item">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                </form>
+                </div>
+        </div>
+</body>
+</html>

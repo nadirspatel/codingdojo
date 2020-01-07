@@ -1,0 +1,117 @@
+<div>
+	Dashboard |  
+	<a href="#/table">Exercise Table</a> | 
+	<a href="#/track">Track</a>
+	<a href="#/" style="margin-left: 75%">Logout</a>
+</div>
+
+<h2>Welcome {{currentUser.name}}!</h2>
+<h3>Level: {{currentUser.level}}</h3>
+<h3>Points: {{currentUser.total_points}}</h3><br>
+
+<div class="panel panel-default" style="width: 500px; height:400px; padding:10px; display: inline-block; margin: 0px 20px 20px 0px; vertical-align: top">
+  <div class="panel-heading">
+    <h2 class="panel-title">Your Stats <span style="margin-left: 320px">Edit:<input type="checkbox" ng-model='edit'></input></span>
+</h2>
+  </div>
+  <div class="panel-body">
+	  <div style="display: inline-block; margin-right: 20px">
+	    <h3>Current Weight: </h3>
+	    <h3>Current Body Fat:</h3>
+	    <h3>Lean Body Mass:</h3>
+	    <h3>Body Fat Mass:</h3>
+	    <h3>Body Mass Index:</h3>
+	    <h3>Basal Metabolic Rate:</h3>
+	    <h3>Total Daily Burn:</h3>
+	  </div>
+	  <div style="display: inline-block; vertical-align: top">
+	  	<h3 ng-model='currentUser.weight' ng-show='!edit' >{{currentUser.weight}} lbs</h3>
+	  	<div ng-show='edit'>
+	  		<input ng-model='currentUser.weight'  value="{{currentUser.weight}}" style="width: 70px; height:25px; margin: 21px 10px 0px 0px;">
+	  	</div>
+	  	<h3 ng-model='currentUser.body_fat' ng-show='!edit' >{{currentUser.body_fat}}%</h3>
+	  	<div ng-show='edit'>
+	  		<input ng-model='currentUser.body_fat'  value="{{currentUser.body_fat}}" style="width: 70px; height:25px; margin: 21px 10px 0px 0px;">
+	  	</div>
+	  	<h3>{{currentUser.weight * (1-(currentUser.body_fat*0.01)) | number:1}} lbs</h3>
+	  	<h3>{{currentUser.weight * (currentUser.body_fat*0.01) | number:1}} lbs</h3>
+	  	<h3>{{(currentUser.weight*703)/(currentUser.height*currentUser.height) | number:1}}</h3>
+	  	<h3>{{370+(21.6*(currentUser.weight * (1-(currentUser.body_fat*0.01))/2.2)) | number:0}} calories</h3>
+	  	<h3>{{(370+(21.6*(currentUser.weight * (1-(currentUser.body_fat*0.01))/2.2)))*currentUser.multiplier | number:0}} calories</h3>
+	  </div>
+  </div>
+</div>
+
+<div class="panel panel-default" style="width: 500px; height:400px; padding:10px; display: inline-block; margin: 0px 20px 20px 0px; vertical-align: top">
+  <div class="panel-heading">
+    <h2 class="panel-title">Your Goals <span style="margin-left: 315px">Edit:<input type="checkbox" ng-model='edit1'></input></span>
+</h2>
+  </div>
+  <div class="panel-body">
+	  <div style="display: inline-block; margin-right: 20px">
+	    <h3>Fitness Goal:</h3>
+	    <h3>Goal Weight:</h3>
+	    <h3>Pounds Left:</h3>
+	    <h3>Daily Surplus/Deficit:</h3>
+	    <h3>Intake Goal:</h3>
+	    <h3>Exercise Level:</h3>
+	    <h3>Estimated Completion:</h3>
+	  </div>
+	  <div style="display: inline-block;">
+	  	<h3>{{currentUser.goal}}</h3>
+	  	<h3 ng-model='currentUser.target_weight' ng-show='!edit1' >{{currentUser.target_weight}} lbs</h3>
+	  	<div ng-show='edit1'>
+	  		<input ng-model='currentUser.target_weight'  value="{{currentUser.target_weight}}" style="width: 70px; height:25px; margin: 10px 10px 0px 0px;">
+	  	</div>
+	  	<h3>{{currentUser.target_weight - currentUser.weight | abs | number:1}} lbs</h3>
+	  	
+	  	<div ng-if='currentUser.goal == "Gain Muscle"'>
+	  	<h3>+{{(370+(21.6*(currentUser.weight * (1-(currentUser.body_fat*0.01))/2.2)))*currentUser.multiplier*0.2 | number:0}} calories</h3>
+	  	<h3>{{(370+(21.6*(currentUser.weight * (1-(currentUser.body_fat*0.01))/2.2)))*currentUser.multiplier*1.2 | number:0}} calories</h3>
+	  	</div>
+
+	  	<div ng-if='currentUser.goal == "Lose Fat"'>
+	  	<h3>{{(370+(21.6*(currentUser.weight * (1-(currentUser.body_fat*0.01))/2.2)))*currentUser.multiplier*-0.2 | number:0}} calories</h3>
+	  	<h3>{{(370+(21.6*(currentUser.weight * (1-(currentUser.body_fat*0.01))/2.2)))*currentUser.multiplier*0.8 | number:0}} calories</h3>
+	  	</div>
+
+	  	<div ng-if='currentUser.goal == "Maintain"'>
+	  	<h3>0 calories</h3>
+	  	<h3>{{(370+(21.6*(currentUser.weight * (1-(currentUser.body_fat*0.01))/2.2)))*currentUser.multiplier | number:0}} calories</h3>
+	  	</div>
+
+	  	<h3 ng-if='currentUser.multiplier == "1.1"'>Sedentary</h3>
+	  	<h3 ng-if='currentUser.multiplier == "1.2"'>1-3 Hours/Week</h3>
+	  	<h3 ng-if='currentUser.multiplier == "1.35"'>4-6 Hours/Week</h3>
+	  	<h3 ng-if='currentUser.multiplier == "1.45"'>6+ Hours/Week</h3>
+
+	  	<h3>{{((currentUser.target_weight - currentUser.weight)*3500)/(0.2*(370+(21.6*(currentUser.weight * (1-(currentUser.body_fat*0.01))/2.2)))*currentUser.multiplier) | abs | number:0}} days</h3>
+	  	
+	  </div>
+  </div>
+</div>
+
+
+<div class="panel panel-default" style="width: 500px; height:400px; padding:10px; display: inline-block; margin: 0px 20px 20px 0px; vertical-align: top">
+  <div class="panel-heading">
+    <h2 class="panel-title">Recent Workouts</h2>
+  </div>
+  <div class="panel-body">
+  	<table class="table table-striped">
+  		<thead>
+  			<tr>
+  				<th>Name</th>
+  				<th>Date</th>
+  				<th>Points</th>
+  			</tr>
+  		</thead>
+  		<tbody>
+  			<tr ng-repeat='workout in currentUser.workouts | limitTo:8 | orderBy:"createdAt":true'>
+  				<td><a href="#/workout/{{workout.id}}">{{workout.title}}</a></td>
+  				<td>{{workout.createdAt | date:'MMMM dd, yyyy'}}</td>
+  				<td>{{workout.points}}</td>
+  			</tr>
+  		</tbody>
+  	</table>
+  </div>
+</div>

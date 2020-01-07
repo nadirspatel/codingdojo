@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>jQuery - Hover In & Out</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<style>
+
+.container {
+    width: 820px;
+    padding: 5px 5px 5px 5px;
+}
+.suit {
+    display: inline-block;
+    width: 200px;
+    background-color: #eee;
+    border: 1px dashed blue;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="suit"><img class="suit-img" src="https://freepngimg.com/thumb/suit/17-suit-png-image-thumb.png" alt="" data-alt-src="https://www.jcrew.com/s7-img-facade/A0536_WX0630_d1?fmt=jpeg&qlt=90,0&resMode=sharp&op_usm=.1,0,0,0&wid=200&hei=200"></div>
+        <div class="suit"><img class="suit-img" src="https://freepngimg.com/thumb/suit/17-suit-png-image-thumb.png" alt="" data-alt-src="https://www.jcrew.com/s7-img-facade/A0536_WX0630_d1?fmt=jpeg&qlt=90,0&resMode=sharp&op_usm=.1,0,0,0&wid=200&hei=200"></div>
+        <div class="suit"><img class="suit-img" src="https://freepngimg.com/thumb/suit/17-suit-png-image-thumb.png" alt="" data-alt-src="https://www.jcrew.com/s7-img-facade/A0536_WX0630_d1?fmt=jpeg&qlt=90,0&resMode=sharp&op_usm=.1,0,0,0&wid=200&hei=200"></div>
+        <div class="suit"><img class="suit-img" src="https://freepngimg.com/thumb/suit/17-suit-png-image-thumb.png" alt="" data-alt-src="https://www.jcrew.com/s7-img-facade/A0536_WX0630_d1?fmt=jpeg&qlt=90,0&resMode=sharp&op_usm=.1,0,0,0&wid=200&hei=200"></div>
+    </div>
+    <script>
+        $(document).ready(function(){
+            $("img").hover(function() {
+            var orig = $(this).attr("src");
+                $(this).attr("src", $(this.attr("data-alt-src"));
+                $(this).attr("src",orig);
+            }
+                )});
+        </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Trivia (with jQuery and AJAX)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css">
+  <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <style>
+  *{
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  }
+  @media (min-width: 768px) {
+    html {
+      font-size: 16px;
+    }
+  }
+  .container {
+    max-width: 960px;
+  }
+  .card-deck .card {
+    min-width: 220px;
+  }
+  </style>
+</head>
+<body>
+<div class="container">
+  <script>
+    var total_score = 0;
+    //grab and callback our AJAX call to API using jQuery
+    $(document).ready(function(){
+    $.get(" https://opentdb.com/api.php?amount=6&type=multiple", function(data){ 
+      var myResults = data; // assign variable myResults to data callback
+      console.log(data) // console log the raw data we got from API
+      document.write('<h1>Total Score:' + total_score + '</h1>');
+        
+      // lets begin to parse the data we got from API
+        for(let type in myResults) { // iterate through first dict with array
+          var count = 1;
+            for(let thisQA in myResults[type]) { // iterate through second array results[]
+              // set some objects we can use later
+              var category = myResults[type][thisQA].category;
+              var difficulty = myResults[type][thisQA].difficulty;
+              var question = myResults[type][thisQA].question;
+              var correctAnswer = myResults[type][thisQA].correct_answer;
+              document.write('<div class=row>')
+              document.write(`
+              <!--begin card -->
+              <div class=\"card-deck mb-3 text-center\">
+                <div class=\"card mb-4 box-shadow\">
+                 <div class=\"card-header\">
+                    <h4 class=\"my-0 font-weight-normal\">QUESTION ${count}</h4>
+                  </div>
+                  <!--begin card body-->
+                  <div class=\"card-body\">
+                  <b>Category:</b> <font color=red>${myResults[type][thisQA].category}</font><br>
+                  <b>Difficulty:</b> <font color=red>${myResults[type][thisQA].difficulty}</font></small><br>
+                  <b>Question:</b> ${myResults[type][thisQA].question}<br>
+                  <!--correct--><button id=\"btn\" name=selectedAnswer value=\"${myResults[type][thisQA].correct_answer}"> ${myResults[type][thisQA].correct_answer}</button><br>
+                  `);
+                  for(let wrongChoices in myResults[type][thisQA].incorrect_answers) { // iterate through third array in results[]:incorrect_answers[]
+                    var wrongAnswer = myResults[type][thisQA].incorrect_answers[wrongChoices]
+                    document.write(` 
+                    <!--incorrect--><button id=\"btn\" name=selectedAnswer value=\"${myResults[type][thisQA].incorrect_answers[wrongChoices]}\"> ${myResults[type][thisQA].incorrect_answers[wrongChoices]}</button><br>
+                    `);
+                  }
+                    //begin check answer function
+                    function checkAnswer() {
+                    $("#btn").click(function() {
+                      if (selectedAnswer == correctAnswer) {
+                      total_score +10;
+                      alert('Correct-o-mondo! Thats the Right answer! Won 10 points')
+                    }
+                    else {
+                      total_score -10;
+                      alert('Try again, wrong! Lose 10 points')
+                      }
+                    })  
+                   }
+                   //end check answer function
+                   document.write('</div><!-- end card body -->')
+                   document.write('</div>')
+                   document.write('</div><!-- end card -->')
+              document.write('</div><hr>')
+              count++;
+            }
+          }
+          //end parse data from API
+          console.log("Heres category outside of for loops:" + category)
+          console.log("And the question outside of for loops:" + question)
+          console.log("And the right answer outside of for loops:" + correctAnswer)
+          console.log("And the wrong answer outside of for loops:" + wrongAnswer)
+    });
+});     
+  </script>
+</div>
+</body>
+</html>

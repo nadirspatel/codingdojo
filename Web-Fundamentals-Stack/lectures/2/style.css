@@ -1,0 +1,46 @@
+#container {
+    width: 970px;
+    margin: 0 auto;
+    /* border: 1px solid black; */
+    padding: 20px;
+    font-family: Verdana;
+}
+
+#container p { 
+    display: inline-block;
+}
+
+#name {
+text-align: center;
+font-size: 32px;
+display: inline;
+}
+
+/* container 2 below */
+#container2 {
+    width: 970px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#name {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+#subtitle {
+    font-size: 24px;
+    text-align:center;
+}
+
+#projects {
+    width: 900px;
+    margin: 0 auto;
+}
+
+.project-boxes {
+    text-align: center;
+    width: 25%;
+    display: inline-block;
+}

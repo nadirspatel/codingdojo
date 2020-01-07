@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ninja Gold (Django Version)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+    .box {
+        text-align: center;
+        width: 240px;
+        height: 200px;
+        background-color: teal;
+        color: white;
+        border: 1px dashed black;
+        display: inline-block;
+    }
+    #log {
+        width: 970px;
+        height: 120px;
+    }
+
+    </style>
+</head>
+<body>
+    <!-- begin container -->
+    <div class="container">
+        <h1>Ninja Gold (Django Version)</h1>
+        <div class="row">
+        <!-- start gold count -->
+        <div class="panel">
+        <h2>Your Gold: <b>{{ ninjas_gold }}</b></h2>
+        </div>
+        <!-- end gold count-->
+        </div>
+
+        <div class="row">
+        <!-- begin farm-->
+        <div class="box">
+        <form method="post" action="/process_money">
+        <input type="hidden" name="building" value="farm">
+            <h2>Farm</h2>
+            <p>(earns 10-20 gold)</p>
+            <p><input type="submit" value="Find Gold"></p>
+        </form>
+        </div>
+        <!-- begin cave-->
+        <div class="box">
+        <form method="post" action="/process_money">
+        <input type="hidden" name="building" value="cave">
+            <h2>Cave</h2>
+            <p>(earns 5-10 gold)</p>
+            <p><input type="submit" name="Find Gold"></p>
+        </form>
+        </div>
+        <!-- begin house-->
+        <div class="box">
+        <form method="post" action="/process_money">
+        <input type="hidden" name="building" value="house">
+            <h2>House</h2>
+            <p>(earns 2-5 gold)</p>
+            <p><input type="submit" name="Find Gold"></p>
+        </form>
+        </div>
+        <!-- begin casino-->
+        <div class="box">
+        <form method="post" action="/process_money">
+        <input type="hidden" name="building" value="casino">
+            <h2>Casino</h2>
+            <p>(earns/takes 0-50 gold)</p>
+            <p><input type="submit" name="Find Gold"></p>
+        </form>
+        </div>
+        <!-- end casino-->
+        </div>
+        <!-- end places row -->
+        <p>&nbsp;</p>
+        <!-- begin activity log -->
+        <div class="row">
+            <label>Activity Log</label><br>
+        <textarea name="activity_log" id="log">
+                {% for message in message_log %}
+                    {{ session['message'] }}
+                {% endfor %}
+        </textarea>
+        </div>
+        <!-- end activity log-->
+
+        <!-- end container -->
+    </div>
+</body>
+</html>
