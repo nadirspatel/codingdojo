@@ -1,0 +1,11 @@
+This was our final exam for Java using Tomcat. Requirements were to build out to a certain scope, and deploy to the cloud using Amazon or Google. I completeled this task and got the highest marks in my class.
+
+Requirements included but not limited to:
+
+- Create AirBNB clone
+- User register/login
+- View/Manage user profile
+- User can add/edit/delete listings
+- Listings must be shown on homepage
+- Rank listings in order (by add date, price, A-Z, etc..)
+- Seperate Admin Dashboard allowing Admin to modify/delete listings and accounts
