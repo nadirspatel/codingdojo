@@ -1,0 +1,11 @@
+This was a Final Exam precurser, which the tasks was to create an "Events based app" written in Java and deployed to the cloud.
+
+There were some basic and advanced tasks given, including but not limited to:
+
+- User Account signup
+- User Account login
+- User Events add
+- User Events remove
+- User Events edit
+- Show events in Homepage based on criteria
+- Do not allow duplicates
