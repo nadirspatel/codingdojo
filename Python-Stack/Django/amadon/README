@@ -1,0 +1,10 @@
+This was a project to build out an "Amazon" type clone. Basic requirements include but not limited to:
+
+- User register/login
+- Dashboard for users to add new products / view products / edit products / delete products
+- Admin area to manage users / products / categories / etc..
+- Ability to view listings as guest / unregistered user
+- User must register/login to purchase or sell
+- Items sorted by name / price / date added
+- Items search option
+- Checkout option
